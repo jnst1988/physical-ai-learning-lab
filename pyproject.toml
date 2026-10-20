@@ -1,0 +1,22 @@
+[project]
+name = "physical-ai-learning-lab"
+version = "0.1.0"
+description = "Reproducible experiments from ML fundamentals to physical AI"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+license = "MIT"
+authors = [{name = "jnst1988"}]
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "nbconvert>=7,<8", "ipykernel>=6,<8", "jupyterlab>=4,<5"]
+
+[build-system]
+requires = ["hatchling>=1.26,<2"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/learning_lab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

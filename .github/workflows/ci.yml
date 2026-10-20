@@ -1,0 +1,17 @@
+name: Reproduce Experiment 001
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.9.5"
+          enable-cache: true
+      - run: uv sync --locked
+      - run: uv run pytest -q
+      - run: uv run python -m learning_lab.experiment001
+      - run: uv run jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=python3 --output-dir=artifacts experiments/01-ml-fundamentals/001-backpropagation-from-scratch/learning.ipynb
