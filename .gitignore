@@ -13,3 +13,14 @@ build/
 data/
 checkpoints/
 artifacts/
+
+# Optional external model studies: download locally, don't check in
+runs/
+mlruns/
+wandb/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.engine
+*.tflite

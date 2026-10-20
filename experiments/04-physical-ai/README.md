@@ -10,3 +10,7 @@ Follow the experiments in order; prerequisites may cross stages. All experiments
 | [016: Closed-Loop Evaluation and Failure Analysis](016-closed-loop-evaluation-and-failure-analysis/README.md) | 012, 014, 015 | Scaffold; not run |
 
 See the [full curriculum](../../docs/curriculum.md) for the learning workflow and completion checklist. Start with synthetic inputs and independent checks before adopting larger models or datasets.
+
+## Real-model connections
+
+FoundationPose and world models are future [model studies](../05-open-source-model-studies/README.md), not implementations in this stage. This track remains focused on interpretable simulation, control and closed-loop evaluation fundamentals.

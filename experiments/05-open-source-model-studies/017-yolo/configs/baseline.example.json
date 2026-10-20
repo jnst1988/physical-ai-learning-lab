@@ -1,0 +1,39 @@
+{
+  "protocol_status": "proposal_only_not_executed",
+  "upstream": {
+    "repository": "https://github.com/ultralytics/ultralytics",
+    "version": "TO_PIN_BEFORE_RUNNING",
+    "model_variant": "TO_SELECT",
+    "weights_source": "TO_DOCUMENT",
+    "license_review": "pending"
+  },
+  "dataset": {
+    "name": "TO_SELECT",
+    "source": "TO_DOCUMENT",
+    "license": "TO_REVIEW",
+    "split": "TO_DEFINE",
+    "sample_count": null
+  },
+  "run": {
+    "task": "detect",
+    "image_size": 640,
+    "confidence_threshold": 0.25,
+    "iou_threshold": 0.7,
+    "device": "TO_RECORD",
+    "seed": 42
+  },
+  "metrics": [
+    "mAP50-95",
+    "small_object_recall_if_supported",
+    "latency_ms_p50",
+    "latency_ms_p95",
+    "peak_memory_mb"
+  ],
+  "metadata": {
+    "git_commit": "TO_RECORD",
+    "python": "TO_RECORD",
+    "dependency_lock": "TO_RECORD",
+    "hardware": "TO_RECORD"
+  },
+  "note": "This JSON is a planning worksheet, not a runner input. Values above are candidate settings, not measured results."
+}

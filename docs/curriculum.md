@@ -2,7 +2,7 @@
 
 ## Scope and status
 
-Experiment 001 is implemented and verified. Experiments 002–016 have goals, hypotheses, evaluation protocols, notebooks, configuration worksheets, and result templates. Their algorithms have not been implemented or evaluated. Creating a scaffold is not evidence that the learner has completed it.
+Experiment 001 is implemented and verified. Experiment 017 (YOLO) is a protocol scaffold with no model run. Experiments 002–016 have goals, hypotheses, evaluation protocols, notebooks, configuration worksheets, and result templates. Their algorithms have not been implemented or evaluated. Creating a scaffold is not evidence that the learner has completed it.
 
 ## Sequence
 
@@ -25,7 +25,7 @@ Experiment 001 is implemented and verified. Experiments 002–016 have goals, hy
 | [015: Behavior Cloning and Distribution Shift](../experiments/04-physical-ai/015-behavior-cloning-and-distribution-shift/README.md) | 004, 014 | Scaffold |
 | [016: Closed-Loop Evaluation and Failure Analysis](../experiments/04-physical-ai/016-closed-loop-evaluation-and-failure-analysis/README.md) | 012, 014, 015 | Scaffold |
 
-The four stages build from differentiable mechanisms to representation, geometry, and closed-loop behavior. A prerequisite means you should explain and validate its key idea before progressing; it is not a claim that future code already imports it. Experiment 014 explicitly connects the mapping and dynamics tracks; 016 reconnects perception uncertainty with policy evaluation.
+The four fundamentals stages build from differentiable mechanisms to representation, geometry, and closed-loop behavior. A prerequisite means you should explain and validate its key idea before progressing; it is not a claim that future code already imports it. Experiment 014 explicitly connects the mapping and dynamics tracks; 016 reconnects perception uncertainty with policy evaluation.
 
 ## How to use each framework
 
@@ -53,3 +53,11 @@ There are no deadline estimates; progress is based on demonstrated understanding
 ## Environment policy
 
 Use the existing root uv project. No extra packages are required to read the frameworks or run their protocol-display cells. Add numerical, vision, or simulation packages only when an implemented experiment needs them. Keep large datasets, checkpoints, and generated artifacts outside Git; record enough information to reproduce them. License review is required before copying external code or introducing datasets or model weights.
+
+## Complementary model-study track
+
+**017 — [YOLO model study](../experiments/05-open-source-model-studies/017-yolo/README.md)** is scaffolded, not implemented or evaluated. Its conceptual foundations are [005](../experiments/02-perception/005-image-classification-pipeline/README.md), [006](../experiments/02-perception/006-detection-iou-and-nms/README.md) and the [CNN note](concepts/cnn.md). Finish prerequisites just in time rather than blocking all model studies until 016.
+
+Later model studies are listed in [05 Open-source Model Studies](../experiments/05-open-source-model-studies/README.md). Before BEVFormer, complete minimal [attention](concepts/attention.md) and [temporal-fusion](concepts/temporal-fusion.md) exercises plus [009 camera projection](../experiments/03-spatial-ai/009-camera-projection-and-frames/README.md).
+
+For external projects, use the [model-study template](../templates/model-study/README.md) to distinguish reproduction, architecture inspection, controlled ablation, modification and deployment. Do not equate a template with a successful run, and do not vendor upstream source or weights by default. MLflow, DVC, Hugging Face demos and GitHub Pages remain optional later enhancements; no service is required for this scaffolding.

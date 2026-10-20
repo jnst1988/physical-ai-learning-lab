@@ -10,3 +10,7 @@ Follow the experiments in order; prerequisites may cross stages. All experiments
 | [012: Occupancy Mapping from Depth](012-occupancy-mapping-from-depth/README.md) | 008, 009, 011 | Scaffold; not run |
 
 See the [full curriculum](../../docs/curriculum.md) for the learning workflow and completion checklist. Start with synthetic inputs and independent checks before adopting larger models or datasets.
+
+## Toward learned BEV perception
+
+After camera projection, learn [self-/cross-attention](../../docs/concepts/attention.md) and [temporal fusion](../../docs/concepts/temporal-fusion.md) before a future BEVFormer study (listed, not yet implemented, in [open-source studies](../05-open-source-model-studies/README.md)).
