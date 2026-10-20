@@ -1,39 +1,38 @@
 {
-  "protocol_status": "proposal_only_not_executed",
+  "protocol_status": "baseline_script_available_not_yet_executed_on_target_mac",
   "upstream": {
     "repository": "https://github.com/ultralytics/ultralytics",
-    "version": "TO_PIN_BEFORE_RUNNING",
-    "model_variant": "TO_SELECT",
-    "weights_source": "TO_DOCUMENT",
-    "license_review": "pending"
+    "package": "ultralytics",
+    "version": "8.3.221",
+    "model_variant": "YOLO11n Detection",
+    "weight_identifier": "yolo11n.pt",
+    "license_review": "see references.md; AGPL-3.0/enterprise upstream"
   },
-  "dataset": {
-    "name": "TO_SELECT",
-    "source": "TO_DOCUMENT",
-    "license": "TO_REVIEW",
-    "split": "TO_DEFINE",
-    "sample_count": null
+  "input": {
+    "source": "https://ultralytics.com/images/bus.jpg",
+    "usage": "official example for local testing; do not redistribute without permissions",
+    "ground_truth": "none"
   },
   "run": {
     "task": "detect",
     "image_size": 640,
     "confidence_threshold": 0.25,
     "iou_threshold": 0.7,
-    "device": "TO_RECORD",
-    "seed": 42
+    "device": "cpu"
   },
-  "metrics": [
-    "mAP50-95",
-    "small_object_recall_if_supported",
-    "latency_ms_p50",
-    "latency_ms_p95",
-    "peak_memory_mb"
+  "expected_artifacts": [
+    "artifacts/yolo017/annotated.jpg",
+    "artifacts/yolo017/manifest.json"
   ],
-  "metadata": {
-    "git_commit": "TO_RECORD",
-    "python": "TO_RECORD",
-    "dependency_lock": "TO_RECORD",
-    "hardware": "TO_RECORD"
-  },
-  "note": "This JSON is a planning worksheet, not a runner input. Values above are candidate settings, not measured results."
+  "available_observations": [
+    "detected box coordinates",
+    "class labels",
+    "confidence scores",
+    "single-run stage timings"
+  ],
+  "not_supported_until_labeled_data": [
+    "mAP50-95",
+    "small-object recall"
+  ],
+  "note": "Documentation of the script defaults, NOT a config file read by the script. No actual YOLO inference result is committed."
 }

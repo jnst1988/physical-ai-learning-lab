@@ -24,7 +24,7 @@ Open `experiments/01-ml-fundamentals/001-backpropagation-from-scratch/learning.i
 ## Two complementary learning paths
 
 - **Foundations (001–016):** derive small mechanisms, implement them from scratch, and prove correctness with controlled synthetic tests. Only 001 is currently implemented.
-- **Open-source model studies (starting 017):** pin and study real upstream models with reproducible baselines, architecture tracing, controlled changes, and optional deployment. Start with [017 YOLO](experiments/05-open-source-model-studies/017-yolo/README.md); **it is a scaffold, not a completed model run**. Study individual [CNN / attention / temporal concepts](docs/concepts/README.md) just in time.
+- **Open-source model studies (starting 017):** pin and study real upstream models with reproducible baselines, architecture tracing, controlled changes, and optional deployment. Start with [017 YOLO](experiments/05-open-source-model-studies/017-yolo/README.md); **its first-inference runner is written, but model inference has not yet been executed/recorded**. Study individual [CNN / attention / temporal concepts](docs/concepts/README.md) just in time.
 
 You can explore YOLO alongside the foundations; finishing all 16 is not required before trying a pretrained inference.
 
@@ -36,9 +36,13 @@ You can explore YOLO alongside the foundations; finishing all 16 is not required
 | [Perception](experiments/02-perception/README.md) | How are signals turned into representations? | 005–008: classification, detection, segmentation, depth | Scaffolded; not run |
 | [Spatial AI](experiments/03-spatial-ai/README.md) | How is 3D space represented? | 009–012: camera geometry, point clouds, pose, mapping | Scaffolded; not run |
 | [Physical AI](experiments/04-physical-ai/README.md) | How do perception and action connect? | 013–016: simulation, control, imitation, evaluation | Scaffolded; not run |
-| [Open-source model studies](experiments/05-open-source-model-studies/README.md) | How do full research models work in practice? | 017 YOLO framework; other models planned | 017 scaffold only; no YOLO run |
+| [Open-source model studies](experiments/05-open-source-model-studies/README.md) | How do full research models work in practice? | 017 YOLO first-inference script; other models planned | Runner available; real YOLO run pending |
 
 See the [full curriculum and completion checklist](docs/curriculum.md), [concept notes](docs/concepts/README.md), and [model-study template](templates/model-study/README.md). Experiments 002–016 contain English explanations, learning notebooks, proposed configurations, and result worksheets; their algorithms are not implemented or evaluated. Only Experiment 001 is currently runnable as a complete experiment.
+
+## Try YOLO first (optional)
+
+Prefer to experiment with a real detector before diving into reverse-mode autodiff? [Experiment 017 — YOLO11n](experiments/05-open-source-model-studies/017-yolo/README.md) has a pinned, isolated first-inference command for Mac/CPU. It outputs an annotated image and JSON detection manifest after you execute it locally. This is not a model accuracy benchmark.
 
 ## Reproduction method
 

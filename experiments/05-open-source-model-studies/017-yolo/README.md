@@ -1,6 +1,6 @@
 # Experiment 017 — YOLO: from object-detection concepts to a reproducible model study
 
-**Status: scaffold / protocol design. No YOLO model was run, trained, evaluated, exported or benchmarked here yet.**
+**Status: first-inference runner implemented; real YOLO inference is pending execution on your machine. No actual YOLO detections, training, evaluations or benchmarks are committed.**
 
 This is the first real upstream-model study in the [Physical AI Learning Lab](../../../README.md). Its goal is to **understand mechanisms rather than just run a demo** and make each step useful to another learner.
 
@@ -31,7 +31,7 @@ Do not assume all YOLO generations share one exact network, head design, or loss
 
 | Stage | Smallest useful deliverable | Evidence to capture | Status |
 | --- | --- | --- | --- |
-| **1. Run** | One documented pretrained inference + dataset/sample provenance | Exact commands, upstream release, weights, input/output and sample figure | Not started |
+| **1. Run** | Pinned, runnable first-inference script + sample provenance | Exact commands, upstream release, weights, input/output and sample figure | Script available; real run pending |
 | **2. Understand** | Model-level diagram + tensor-shape trace | Backbone/neck/head notes; preprocessing and postprocessing walk-through | Not started |
 | **3. Experiment** | Same-weights input-resolution or NMS/confidence experiment | Hypothesis first; fixed dataset/hardware; per-class or small-object metrics and timings | Not started |
 | **4. Modify** | A controlled fine-tune or narrow model/pipeline modification | Train/validation split, seed, checkpoint, loss curves and error cases | Not started |
@@ -43,22 +43,45 @@ Start with a baseline, then choose **one controlled change**. Do not claim concl
 
 | File or folder | Purpose |
 | --- | --- |
-| [configs/baseline.example.json](configs/baseline.example.json) | Proposed experiment protocol. **Not consumed by a runner yet.** |
+| [configs/baseline.example.json](configs/baseline.example.json) | Describes CLI defaults and protocol; the script does not parse this JSON. |
 | [notebooks/](notebooks/README.md) | Future architecture and feature-visualization notebooks |
-| [scripts/](scripts/README.md) | Future small inference, evaluation and export entry points |
+| [scripts/infer.py](scripts/infer.py) | Runnable first YOLO11n inference and JSON output; evaluation/export are future work |
 | [results/](results/README.md) | Reproducible evidence and ablation records, currently empty |
 | [references.md](references.md) | Canonical upstream links, revision and license checklist |
 
-## First practical session (optional; not validated in this repository)
+## First practical session — reproducible YOLO inference on Mac (external model not yet executed)
 
-1. Pick a fixed Ultralytics release and compatible *named model* (for example the YOLO11 nano weights), record the exact versions/revision and license before downloading.
-2. Choose an image you own or may share, plus a small evaluation set with known provenance and rights.
-3. In an **isolated, optional environment**, follow the [official Ultralytics quickstart](https://docs.ultralytics.com/quickstart/) for inference. The main lab environment intentionally does **not** depend on Ultralytics or Torch.
-4. Document expected vs actual output, failures and execution details in [results](results/README.md). Add an independently testable local runner only once this step is verified.
+We intentionally choose **YOLO11n** (`yolo11n.pt`) and pin the Ultralytics package to **8.3.221** in the [script's isolated uv metadata](scripts/infer.py). This small, established model is practical for a first CPU run on Mac. The official [bus.jpg example](https://ultralytics.com/images/bus.jpg) is downloaded **only for local testing**, not redistributed.
 
-No datasets, upstream source, third-party checkpoints or generated `runs/` directory should be committed. On first use of upstream code or weights, review the [license and provenance checklist](references.md).
+From your local clone (after merging this PR), install [uv](https://docs.astral.sh/uv/getting-started/installation/) if necessary and run:
 
-## Acceptance criteria for a completed baseline
+```bash
+git pull
+uv run experiments/05-open-source-model-studies/017-yolo/scripts/infer.py \
+  --source https://ultralytics.com/images/bus.jpg \
+  --model yolo11n.pt --device cpu --imgsz 640 \
+  --output-dir artifacts/yolo017
+
+# macOS: examine the annotated result and JSON manifest
+open artifacts/yolo017/annotated.jpg
+cat artifacts/yolo017/manifest.json
+```
+
+The first invocation may download PyTorch dependencies, official YOLO weights and the example image. No NVIDIA GPU is needed. For Apple Silicon you may later try `--device mps`, but establish a CPU baseline first. Avoid committing model weights, the example image, generated outputs or downloaded upstream source.
+
+**What to observe:** labels, confidence values, XYXY pixel-coordinate boxes, input image size and reported inference stages. A single image has **no ground-truth accuracy measurement**; this is not a latency benchmark. Write your own interpretation after the run. See the [script guide](scripts/README.md) and [results template](results/README.md).
+
+**Lightweight test of our wrapper only** (no YOLO download):
+
+```bash
+uv run pytest -q tests/test_yolo017_baseline.py
+```
+
+These tests use a fake model and do **not** demonstrate that YOLO inference succeeded. Check [upstream license and provenance](references.md) before using external assets in published material.
+
+No datasets, third-party checkpoints or generated `runs/` directory should be committed. On first use of upstream code or weights, review the [license and provenance checklist](references.md).
+
+## Acceptance criteria for a completed baseline (still pending actual execution)
 
 - [ ] Exact upstream version, model variant and weight source documented.
 - [ ] Runnable command/entry point with explicit input, device, dependencies, seed (when applicable) and preprocessing.
