@@ -2,7 +2,7 @@
 
 ## Scope and status
 
-Experiment 001 is implemented and verified. Experiment 017 (YOLO) is a protocol scaffold with no model run. Experiments 002–016 have goals, hypotheses, evaluation protocols, notebooks, configuration worksheets, and result templates. Their algorithms have not been implemented or evaluated. Creating a scaffold is not evidence that the learner has completed it.
+Experiment 001 is implemented and verified. Experiment 017 (YOLO) has a runnable first-inference script but no actual model run or measured YOLO results yet. Experiments 002–016 have goals, hypotheses, evaluation protocols, notebooks, configuration worksheets, and result templates. Their algorithms have not been implemented or evaluated. Creating a scaffold is not evidence that the learner has completed it.
 
 ## Sequence
 
@@ -56,7 +56,7 @@ Use the existing root uv project. No extra packages are required to read the fra
 
 ## Complementary model-study track
 
-**017 — [YOLO model study](../experiments/05-open-source-model-studies/017-yolo/README.md)** is scaffolded, not implemented or evaluated. Its conceptual foundations are [005](../experiments/02-perception/005-image-classification-pipeline/README.md), [006](../experiments/02-perception/006-detection-iou-and-nms/README.md) and the [CNN note](concepts/cnn.md). Finish prerequisites just in time rather than blocking all model studies until 016.
+**017 — [YOLO model study](../experiments/05-open-source-model-studies/017-yolo/README.md)** has a first-inference runner and offline tests; real YOLO inference and evaluation are pending. Its conceptual foundations are [005](../experiments/02-perception/005-image-classification-pipeline/README.md), [006](../experiments/02-perception/006-detection-iou-and-nms/README.md) and the [CNN note](concepts/cnn.md). Finish prerequisites just in time rather than blocking all model studies until 016.
 
 Later model studies are listed in [05 Open-source Model Studies](../experiments/05-open-source-model-studies/README.md). Before BEVFormer, complete minimal [attention](concepts/attention.md) and [temporal-fusion](concepts/temporal-fusion.md) exercises plus [009 camera projection](../experiments/03-spatial-ai/009-camera-projection-and-frames/README.md).
 

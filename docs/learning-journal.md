@@ -37,3 +37,11 @@ Date / Experiment / Question / Prediction / Exact command and configuration / Ob
 **Evidence boundary:** All newly added material is documentation/scaffolding. There has been **no YOLO model execution, fine-tuning, dataset evaluation or ONNX export** in this change.
 
 **Next action:** Choose and pin one YOLO release, weights and licensed sample/evaluation data; run and document the smallest reproducible inference baseline. Then trace the backbone/neck/head and propose one controlled experiment.
+
+## 2026-10-20 — Experiment 017 first-inference runner
+
+**Planning and implementation:** Selected YOLO11n and pinned Ultralytics 8.3.221. Added an isolated uv Python script that can download the official example/weights on first use and record annotated output, detected classes, confidence and pixel boxes in a local JSON manifest. Added offline mock tests and exact Mac CPU reproduction commands.
+
+**Evidence boundary:** No real YOLO checkpoint was loaded or run on the user's Mac by this GitHub change. Mock tests validate only wrapper behavior. No measured detection quality or speed is claimed.
+
+**Next action:** Execute the baseline on Mac, inspect `artifacts/yolo017/annotated.jpg` and `manifest.json`, log actual evidence, then trace the architecture and run a controlled confidence or resolution comparison.
