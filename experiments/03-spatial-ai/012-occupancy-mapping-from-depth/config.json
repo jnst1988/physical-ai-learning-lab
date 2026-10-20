@@ -1,0 +1,10 @@
+{
+  "experiment_id": "012",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Single-view grid with identical resolution.",
+  "metrics": "Occupied-cell IoU, observed coverage, and grid memory.",
+  "controlled_change": "Vary grid resolution and then pose noise in separate runs."
+}

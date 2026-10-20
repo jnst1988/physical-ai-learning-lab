@@ -1,0 +1,10 @@
+{
+  "experiment_id": "016",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Nominal observations with the exact same initial states and seeds.",
+  "metrics": "Success rate with confidence interval, tracking error, and failure-category counts.",
+  "controlled_change": "Vary noise, delay, or mass mismatch one factor at a time."
+}

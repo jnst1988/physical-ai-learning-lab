@@ -1,0 +1,10 @@
+{
+  "experiment_id": "007",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "All-background mask.",
+  "metrics": "Pixel accuracy, foreground IoU, and Dice.",
+  "controlled_change": "Vary foreground area while keeping the predictor fixed."
+}

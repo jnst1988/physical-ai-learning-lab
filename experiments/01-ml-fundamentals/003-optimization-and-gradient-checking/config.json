@@ -1,0 +1,10 @@
+{
+  "experiment_id": "003",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Closed-form derivative and minimizer.",
+  "metrics": "Distance to minimizer, gradient error, and loss per update.",
+  "controlled_change": "Compare rates 0.01, 0.1, and 1.0 on f(x)=x*x, starting at x=3."
+}

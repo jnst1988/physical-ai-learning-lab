@@ -1,0 +1,10 @@
+{
+  "experiment_id": "004",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Constant predictor fitted on training labels only.",
+  "metrics": "Training, validation, and held-out test MSE.",
+  "controlled_change": "Vary model capacity with data, splits, and update budget held fixed."
+}

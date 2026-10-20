@@ -1,0 +1,10 @@
+{
+  "experiment_id": "011",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Perturbed initial pose without optimization.",
+  "metrics": "Reprojection RMSE, rotation error, and translation error.",
+  "controlled_change": "Vary observation noise with landmark geometry held fixed."
+}

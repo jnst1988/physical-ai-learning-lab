@@ -19,3 +19,13 @@
 ## Entry template
 
 Date / Experiment / Question / Prediction / Exact command and configuration / Observation / Explanation / Failed attempt / Remaining uncertainty / Next action.
+
+## 2026-10-20 — Curriculum frameworks 002–016
+
+**Planning work:** Added fifteen experiment frameworks across the four stages, with prerequisites, falsifiable hypotheses, synthetic-data starting points, independent baselines, metrics, acceptance criteria, controlled changes, and limitations.
+
+**Artifacts:** Each framework has an English README, a learning notebook, a proposed configuration, and an unfilled results worksheet. See [curriculum](curriculum.md).
+
+**Evidence boundary:** No new algorithm has been implemented and no new experiment has produced measurements. Existing Experiment 001 remains the completed starting point. Notebook protocol cells are planning aids, not experiment runners.
+
+**Next action:** Start Experiment 002, derive the parameter gradients, implement the minimum MLP, and replace pending sections with measured evidence.

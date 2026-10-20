@@ -1,0 +1,10 @@
+{
+  "experiment_id": "010",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Identity transformation.",
+  "metrics": "Point RMSE, rotation error, and translation error.",
+  "controlled_change": "Add Gaussian point noise and vary its standard deviation."
+}

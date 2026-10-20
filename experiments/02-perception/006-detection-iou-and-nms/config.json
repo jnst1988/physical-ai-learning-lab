@@ -1,0 +1,10 @@
+{
+  "experiment_id": "006",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Keep every predicted box above the same score threshold.",
+  "metrics": "IoU, precision, recall at a declared IoU threshold, and retained-box count.",
+  "controlled_change": "Vary the NMS IoU threshold and report the precision/recall tradeoff."
+}

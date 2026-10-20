@@ -1,5 +1,12 @@
 # Spatial AI
 
-Explore camera geometry, point clouds, pose, and mapping.
+Follow the experiments in order; prerequisites may cross stages. All experiments after 001 are learning frameworks awaiting implementation.
 
-Planned stage. No experiments implemented yet. Use the root experiment template for new work.
+| Experiment | Prerequisites | Status |
+| --- | --- | --- |
+| [009: Camera Projection and Coordinate Frames](009-camera-projection-and-frames/README.md) | 008 | Scaffold; not run |
+| [010: Point Cloud Alignment](010-point-cloud-alignment/README.md) | 009 | Scaffold; not run |
+| [011: Pose Estimation and Reprojection](011-pose-estimation-and-reprojection/README.md) | 009, 010 | Scaffold; not run |
+| [012: Occupancy Mapping from Depth](012-occupancy-mapping-from-depth/README.md) | 008, 009, 011 | Scaffold; not run |
+
+See the [full curriculum](../../docs/curriculum.md) for the learning workflow and completion checklist. Start with synthetic inputs and independent checks before adopting larger models or datasets.

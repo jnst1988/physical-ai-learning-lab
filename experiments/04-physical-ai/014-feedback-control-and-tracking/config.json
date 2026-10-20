@@ -1,0 +1,10 @@
+{
+  "experiment_id": "014",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Fixed open-loop action evaluated on the same disturbance schedule.",
+  "metrics": "Tracking RMSE, overshoot, settling time, and saturation fraction.",
+  "controlled_change": "Vary one controller gain at a time with the disturbance schedule fixed."
+}

@@ -25,12 +25,12 @@ Open `experiments/01-ml-fundamentals/001-backpropagation-from-scratch/learning.i
 
 | Stage | Questions | Planned experiments | Status |
 | --- | --- | --- | --- |
-| ML fundamentals | How do models learn? | Scalar autodiff, MLP, optimization, generalization | Experiment 001 implemented |
-| Perception | How are signals turned into representations? | Image classification, detection, segmentation, depth | Planned |
-| Spatial AI | How is 3D space represented? | Camera geometry, point clouds, pose, mapping | Planned |
-| Physical AI | How do perception and action connect? | Simulation, control, imitation learning, evaluation | Planned |
+| [ML fundamentals](experiments/01-ml-fundamentals/README.md) | How do models learn? | 001–004: autodiff, MLP, optimization, generalization | 001 implemented; 002–004 scaffolded |
+| [Perception](experiments/02-perception/README.md) | How are signals turned into representations? | 005–008: classification, detection, segmentation, depth | Scaffolded; not run |
+| [Spatial AI](experiments/03-spatial-ai/README.md) | How is 3D space represented? | 009–012: camera geometry, point clouds, pose, mapping | Scaffolded; not run |
+| [Physical AI](experiments/04-physical-ai/README.md) | How do perception and action connect? | 013–016: simulation, control, imitation, evaluation | Scaffolded; not run |
 
-These are learning directions, not claims of implemented capabilities.
+See the [full curriculum and completion checklist](docs/curriculum.md). Experiments 002–016 contain English explanations, learning notebooks, proposed configurations, and result worksheets; their algorithms are not implemented or evaluated. Only Experiment 001 is currently runnable as a complete experiment.
 
 ## Reproduction method
 

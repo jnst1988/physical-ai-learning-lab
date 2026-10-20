@@ -1,0 +1,10 @@
+{
+  "experiment_id": "005",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Majority-class predictor using training frequencies.",
+  "metrics": "Accuracy, per-class recall, and confusion matrix.",
+  "controlled_change": "Add controlled image noise after freezing the split."
+}

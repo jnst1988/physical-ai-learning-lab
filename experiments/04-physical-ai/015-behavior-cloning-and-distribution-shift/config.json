@@ -1,0 +1,10 @@
+{
+  "experiment_id": "015",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Expert controller and a constant-action policy.",
+  "metrics": "Held-out action MSE, rollout success rate, and horizon-normalized tracking error.",
+  "controlled_change": "Vary the amount of demonstration data with evaluation seeds held fixed."
+}

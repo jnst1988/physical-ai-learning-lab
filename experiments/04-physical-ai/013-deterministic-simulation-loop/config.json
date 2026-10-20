@@ -1,0 +1,10 @@
+{
+  "experiment_id": "013",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Analytic constant-velocity or constant-acceleration trajectory.",
+  "metrics": "Trajectory error, repeatability, and step count.",
+  "controlled_change": "Halve the time step while keeping simulated duration and forces fixed."
+}

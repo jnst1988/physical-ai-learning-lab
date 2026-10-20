@@ -1,0 +1,10 @@
+{
+  "experiment_id": "002",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Linear classifier on exactly the same inputs.",
+  "metrics": "Classification accuracy and loss over updates.",
+  "controlled_change": "Vary hidden width while holding the initialization seed and update budget fixed."
+}

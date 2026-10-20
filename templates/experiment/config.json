@@ -1,0 +1,10 @@
+{
+  "experiment_id": "NNN",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "pending",
+  "implementation": null,
+  "baseline": "pending",
+  "metrics": [],
+  "controlled_change": "pending"
+}

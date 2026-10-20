@@ -1,0 +1,10 @@
+{
+  "experiment_id": "008",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Constant depth estimated from training data only.",
+  "metrics": "MAE, absolute relative error, and aligned MAE, reported separately.",
+  "controlled_change": "Vary scale independently of additive noise."
+}

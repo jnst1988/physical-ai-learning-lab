@@ -1,0 +1,10 @@
+{
+  "experiment_id": "009",
+  "status": "scaffold",
+  "seed": 42,
+  "data_source": "synthetic_planned",
+  "implementation": null,
+  "baseline": "Hand-calculated identity-camera example.",
+  "metrics": "Pixel reprojection error and 3D round-trip error.",
+  "controlled_change": "Vary focal length with the 3D scene fixed."
+}
