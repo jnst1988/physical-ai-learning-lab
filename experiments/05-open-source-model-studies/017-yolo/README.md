@@ -81,6 +81,10 @@ These tests use a fake model and do **not** demonstrate that YOLO inference succ
 
 No datasets, third-party checkpoints or generated `runs/` directory should be committed. On first use of upstream code or weights, review the [license and provenance checklist](references.md).
 
+## Next: architecture analysis
+
+After your first local YOLO11n inference, follow the [guided architecture analysis](docs-architecture.md) for Forward Hook tensor shapes, module connections, Detection Head inspection and a controlled confidence-threshold comparison. Record **actual outputs only** in the [learning worksheet](results/architecture-analysis.md). The new architecture tools have not yet been run on your Mac through this GitHub update.
+
 ## Acceptance criteria for a completed baseline (still pending actual execution)
 
 - [ ] Exact upstream version, model variant and weight source documented.
