@@ -1,0 +1,32 @@
+{
+  "status": "proposal_only",
+  "upstream": {
+    "url": "TO_FILL",
+    "revision": "TO_PIN",
+    "model": "TO_SELECT",
+    "license": "TO_CHECK",
+    "weights": "TO_DOCUMENT"
+  },
+  "data": {
+    "source": "TO_FILL",
+    "license": "TO_CHECK",
+    "split": "TO_DEFINE"
+  },
+  "environment": {
+    "os": "TO_RECORD",
+    "python": "TO_RECORD",
+    "dependencies": "TO_LOCK",
+    "device": "TO_RECORD",
+    "seed": 42
+  },
+  "hypothesis": "TO_WRITE_BEFORE_RUNNING",
+  "baseline_command": "TO_WRITE",
+  "controlled_variable": "TO_DEFINE",
+  "metrics": [
+    {
+      "name": "TO_DEFINE",
+      "unit": "TO_DEFINE"
+    }
+  ],
+  "note": "Planning only. No executable runner consumes this template."
+}

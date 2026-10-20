@@ -10,3 +10,7 @@ Follow the experiments in order; prerequisites may cross stages. All experiments
 | [008: Depth and Scale Ambiguity](008-depth-and-scale-ambiguity/README.md) | 004, 005 | Scaffold; not run |
 
 See the [full curriculum](../../docs/curriculum.md) for the learning workflow and completion checklist. Start with synthetic inputs and independent checks before adopting larger models or datasets.
+
+## Related real-model studies
+
+[017 YOLO](../05-open-source-model-studies/017-yolo/README.md) applies detection and IoU/NMS concepts to a real upstream model. Use the [CNN note](../../docs/concepts/cnn.md) to understand the detector's backbone and neck. The YOLO study is a *scaffold* with no measured result yet.

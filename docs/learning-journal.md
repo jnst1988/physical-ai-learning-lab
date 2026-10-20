@@ -29,3 +29,11 @@ Date / Experiment / Question / Prediction / Exact command and configuration / Ob
 **Evidence boundary:** No new algorithm has been implemented and no new experiment has produced measurements. Existing Experiment 001 remains the completed starting point. Notebook protocol cells are planning aids, not experiment runners.
 
 **Next action:** Start Experiment 002, derive the parameter gradients, implement the minimum MLP, and replace pending sections with measured evidence.
+
+## 2026-10-20 — Model-study learning track design
+
+**Planning work:** Added a distinct upstream-model research track, a reusable evidence-first template and a YOLO study protocol (017). Created lightweight concept syllabi for CNN, self-/cross-attention and temporal feature fusion.
+
+**Evidence boundary:** All newly added material is documentation/scaffolding. There has been **no YOLO model execution, fine-tuning, dataset evaluation or ONNX export** in this change.
+
+**Next action:** Choose and pin one YOLO release, weights and licensed sample/evaluation data; run and document the smallest reproducible inference baseline. Then trace the backbone/neck/head and propose one controlled experiment.
