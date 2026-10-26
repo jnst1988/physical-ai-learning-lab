@@ -45,3 +45,15 @@ Date / Experiment / Question / Prediction / Exact command and configuration / Ob
 **Evidence boundary:** No real YOLO checkpoint was loaded or run on the user's Mac by this GitHub change. Mock tests validate only wrapper behavior. No measured detection quality or speed is claimed.
 
 **Next action:** Execute the baseline on Mac, inspect `artifacts/yolo017/annotated.jpg` and `manifest.json`, log actual evidence, then trace the architecture and run a controlled confidence or resolution comparison.
+
+## 2026-10-26 — Prioritize automotive solution architecture
+
+**Decision:** Make customer discovery -> knowledge assistant -> tools -> cloud handover -> fleet data loop -> simulation the primary sequence. Defer ML/perception and use them on demand.
+
+**Source boundary:** The target role was located in a secondary public reproduction; the exact current official employer JD was not confirmed. See [role alignment](role-alignment.md).
+
+**Artifacts:** Added labs 018–023, a fictional worked charter, architecture and acceptance plan for 018, and a reusable solution-delivery checklist.
+
+**Evidence:** Design and planning only. No assistant, model/API call, cloud resource, data pipeline or simulation has been implemented by this change. Existing YOLO additions from the remote main branch were preserved.
+
+**Next:** Review 018 scope and implement the first offline retrieval slice of 019 before selecting a real model or provisioning cloud resources.

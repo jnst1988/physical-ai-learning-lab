@@ -1,12 +1,16 @@
 # Physical AI Learning Lab
 
-An open learning lab by **jnst1988**: build intuition from ML fundamentals through perception, spatial AI, and physical AI with small, reproducible experiments that others can study and extend.
+An open learning lab by **jnst1988**, now prioritizing automotive cloud and AI solution delivery: customer discovery, working PoCs, evaluation, architecture and handover. ML, perception and Physical AI mechanisms remain available as supporting study tracks.
 
 ## Vision
 
 Understand mechanisms, not just run demos. Each experiment starts with a question, states a falsifiable hypothesis, implements the smallest useful system, measures results, and explains limitations. Learn locally; share code, evidence, and learning notes on GitHub.
 
-## Start here
+## Start here — solution-first
+
+Begin with the [priority roadmap](docs/solution-first-roadmap.md) and [018 customer discovery](experiments/06-automotive-ai-solutions/018-customer-discovery-and-solution-design/README.md), then build [019 automotive knowledge assistant](experiments/06-automotive-ai-solutions/019-automotive-knowledge-assistant/README.md). These are design/implementation plans; no new assistant or cloud deployment is claimed. You do not need to finish 001–017 first. See the [role mapping and source limits](docs/role-alignment.md).
+
+### Existing runnable foundation demo
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and Git, then:
 
@@ -21,14 +25,16 @@ uv run jupyter lab
 
 Open `experiments/01-ml-fundamentals/001-backpropagation-from-scratch/learning.ipynb` using the project environment. Python 3.12 is the default; no GPU or dataset downloads are required for Experiment 001. Runtime code uses only the standard library; development tools are locked in `uv.lock`.
 
-## Two complementary learning paths
+## Supporting learning paths — lower priority
 
 - **Foundations (001–016):** derive small mechanisms, implement them from scratch, and prove correctness with controlled synthetic tests. Only 001 is currently implemented.
 - **Open-source model studies (starting 017):** pin and study real upstream models with reproducible baselines, architecture tracing, controlled changes, and optional deployment. Start with [017 YOLO](experiments/05-open-source-model-studies/017-yolo/README.md); **its first-inference runner is written, but model inference has not yet been executed/recorded**. Study individual [CNN / attention / temporal concepts](docs/concepts/README.md) just in time.
 
 You can explore YOLO alongside the foundations; finishing all 16 is not required before trying a pretrained inference.
 
-## Roadmap
+## Supporting roadmap
+
+The primary track is [018–023 Automotive AI Solutions](experiments/06-automotive-ai-solutions/README.md). The numbered directories below remain stable; directory numbers do not determine study priority.
 
 | Stage | Questions | Planned experiments | Status |
 | --- | --- | --- | --- |
@@ -40,7 +46,7 @@ You can explore YOLO alongside the foundations; finishing all 16 is not required
 
 See the [full curriculum and completion checklist](docs/curriculum.md), [concept notes](docs/concepts/README.md), and [model-study template](templates/model-study/README.md). Experiments 002–016 contain English explanations, learning notebooks, proposed configurations, and result worksheets; their algorithms are not implemented or evaluated. Only Experiment 001 is currently runnable as a complete experiment.
 
-## Try YOLO first (optional)
+## YOLO reference study (deferred / optional)
 
 Prefer to experiment with a real detector before diving into reverse-mode autodiff? [Experiment 017 — YOLO11n](experiments/05-open-source-model-studies/017-yolo/README.md) has a pinned, isolated first-inference command for Mac/CPU. It outputs an annotated image and JSON detection manifest after you execute it locally. This is not a model accuracy benchmark.
 
@@ -52,12 +58,14 @@ Prefer to experiment with a real detector before diving into reverse-mode autodi
 4. Change one variable and record the result, environment, and limitations.
 5. Explain what changed your understanding, then propose the next experiment.
 
-Start with [Experiment 001](experiments/01-ml-fundamentals/001-backpropagation-from-scratch/README.md). Use the [experiment template](templates/experiment/README.md) for new work and append evidence to the [learning journal](docs/learning-journal.md). Keep large data and model weights outside Git; document their origin and license before use.
+For the optional foundations path, start with [Experiment 001](experiments/01-ml-fundamentals/001-backpropagation-from-scratch/README.md). Use the [experiment template](templates/experiment/README.md) for new work and append evidence to the [learning journal](docs/learning-journal.md). Keep large data and model weights outside Git; document their origin and license before use.
 
 ## Repository map
 
 - `src/learning_lab/`: reusable, inspectable implementations.
-- `experiments/`: stage-based explanations and notebooks.
+- `experiments/06-automotive-ai-solutions/`: primary solution-delivery track.
+- `experiments/`: preserved foundations, physical mechanisms and model studies.
+- `templates/solution/`: customer-facing delivery and evidence checklist.
 - `tests/`: independent correctness and convergence checks.
 - `templates/experiment/`: a repeatable fundamentals experiment structure.
 - `templates/model-study/`: reproducible upstream-model study protocol and reporting checklist.

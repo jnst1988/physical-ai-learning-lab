@@ -1,10 +1,14 @@
 # Learning curriculum
 
+## Current priority — solution-first
+
+As of 2026-10-26, follow [018–023 Automotive AI Solutions](../experiments/06-automotive-ai-solutions/README.md) using the [priority roadmap](solution-first-roadmap.md). Start with 018 discovery and 019 knowledge assistant. All new solution labs are planned; 018 contains worked design drafts. ML fundamentals and perception are lower-priority references, and 001–017 are not entry requirements.
+
 ## Scope and status
 
 Experiment 001 is implemented and verified. Experiment 017 (YOLO) has a runnable first-inference script but no actual model run or measured YOLO results yet. Experiments 002–016 have goals, hypotheses, evaluation protocols, notebooks, configuration worksheets, and result templates. Their algorithms have not been implemented or evaluated. Creating a scaffold is not evidence that the learner has completed it.
 
-## Sequence
+## Optional deep-study sequence — deferred
 
 | Experiment | Prerequisites | Status |
 | --- | --- | --- |
@@ -27,7 +31,7 @@ Experiment 001 is implemented and verified. Experiment 017 (YOLO) has a runnable
 
 The four fundamentals stages build from differentiable mechanisms to representation, geometry, and closed-loop behavior. A prerequisite means you should explain and validate its key idea before progressing; it is not a claim that future code already imports it. Experiment 014 explicitly connects the mapping and dynamics tracks; 016 reconnects perception uncertainty with policy evaluation.
 
-## How to use each framework
+## How to use each supporting framework
 
 1. Read the question and prerequisite experiments. Predict a result before writing code.
 2. Open the experiment notebook and derive one tiny example by hand.

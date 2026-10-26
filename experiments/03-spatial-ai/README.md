@@ -1,5 +1,7 @@
 # Spatial AI
 
+**Priority update (2026-10-26):** This is a supporting study track. Start with [Automotive AI Solutions](../06-automotive-ai-solutions/README.md); learn this material only when it supports the next solution decision. Existing prerequisite chains apply to deep study, not to entry into the solution track.
+
 Follow the experiments in order; prerequisites may cross stages. All experiments after 001 are learning frameworks awaiting implementation.
 
 | Experiment | Prerequisites | Status |

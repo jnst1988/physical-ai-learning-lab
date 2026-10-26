@@ -1,5 +1,7 @@
 # Open-source model studies
 
+**Priority update (2026-10-26):** This is a supporting study track. Start with [Automotive AI Solutions](../06-automotive-ai-solutions/README.md); learn this material only when it supports the next solution decision. Existing prerequisite chains apply to deep study, not to entry into the solution track.
+
 **Status: learning framework only.** This stage complements, rather than replaces, Experiments 001–016.
 
 ## Two complementary learning loops
