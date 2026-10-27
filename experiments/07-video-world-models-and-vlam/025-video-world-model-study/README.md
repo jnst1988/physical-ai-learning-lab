@@ -1,28 +1,26 @@
-# 025: Video World Models for Robotics
+# 025: Video world-model study on PushT
 
-**Priority:** Primary Physical AI learning path. **Status:** Framework only; implementation and measurements pending.
+**Status:** Planned after 024 saves episodes and the baseline.
 
-## Focus
-Video prediction, action conditioning and temporal consistency.
+## Distinguish the prediction targets
 
-## Goal and hypothesis
-Study a pinned video/world model through its official inference interface; identify what inputs condition the predicted future.
+- **Latent prediction:** an action-conditioned model predicts future representations; those outputs need not decode into video. V-JEPA 2-AC and RoboJEPA are study candidates.
+- **Pixel/video prediction:** a model generates visible future frames. Boundless World Model is a candidate; its published inference uses CUDA and a Wan2.2 TI2V 5B base model.
 
-Hypothesis: a simple baseline and explicit task/embodiment contracts will make the study's contribution and failure modes measurable. This remains untested until an experiment is run.
+A generic text-to-video clip is not an action-conditioned robot world model. It cannot answer whether a given action caused the predicted change.
 
-## Proposed architecture
-Prediction protocol, runtime/VRAM record, visual and task-relevant future-state evaluation.
+## Procedure
 
-## Metrics and completion gate
-Future-state error where labels exist, temporal consistency, task-relevant ranking, latency, memory.
+1. Pin official code revision, checkpoint, terms and hardware requirements.
+2. Freeze observation histories and action windows from 024 episodes.
+3. Run the documented action-conditioned inference; save predicted and actual continuation side by side.
+4. Confirm that the model consumes the action as an input, rather than only a text prompt.
+5. Report task-state agreement separately from visual quality, plus latency, peak memory and any frame resizing.
 
-Completion evidence: A real pinned model run is recorded, or blocked constraints are documented honestly.
+## Local-resource gate
 
-## Reproduction status
-No runnable experiment has been added here yet. Pin model/data/simulator versions and exact commands before claiming reproduction. Begin in simulation or offline replay and save full failure traces. Keep heavy model weights and generated video outside Git; document their source, terms and checksums.
+Check the official inference setup before downloading multi-gigabyte weights. If CUDA or memory is unavailable, record the exact blocker and keep the 024 replay/data-contract demo. A lightweight placeholder can test the interface, but label it as a pipeline prototype rather than a reproduction of the large model.
 
-## Limitations
-Visually plausible frames do not demonstrate correct physics or executable actions.
+## Exit evidence
 
-## Next step
-See the [Physical AI roadmap](../../docs/physical-ai-roadmap.md). Foundations are pulled in when needed, not completed as a fixed prerequisite chain.
+One real, pinned model run on saved task data, actual-versus-predicted clips, per-case metrics and measured resource use. Otherwise mark full inference as blocked by a named hardware/software requirement.

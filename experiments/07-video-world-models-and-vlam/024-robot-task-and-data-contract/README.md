@@ -1,28 +1,43 @@
-# 024: Robot Task and Data Contract
+# 024: PushT baseline and robot data contract
 
-**Priority:** Primary Physical AI learning path. **Status:** Framework only; implementation and measurements pending.
+**Status:** Runbook prepared; not yet executed in this repository.
 
-## Focus
-Task definition, embodiment and data contracts.
+## Purpose
 
-## Goal and hypothesis
-Choose a small manipulation task; define camera/robot observations, action units and episode-based evaluation.
+Establish a repeatable simulator, policy, episode, video and evaluation contract before adding video prediction or a VLA. This is the shared benchmark for 025–027.
 
-Hypothesis: a simple baseline and explicit task/embodiment contracts will make the study's contribution and failure modes measurable. This remains untested until an experiment is run.
+## Isolated environment
 
-## Proposed architecture
-Frozen task and data contract, provenance ledger, split validator, scripted-policy baseline.
+Use a separate Python 3.12 environment so the root teaching environment stays lightweight:
 
-## Metrics and completion gate
-Task completion, leakage checks, valid-action fraction, episode reproducibility.
+```sh
+uv venv --python 3.12 .venv-robot
+uv pip install --python .venv-robot/bin/python 'lerobot[pusht]==0.6.0'
+```
 
-Completion evidence: Simulator and trajectories recorded.
+Windows: `.venv-robot\Scripts\python.exe`. See the [official install guide](https://github.com/huggingface/lerobot/blob/main/docs/source/installation.mdx). Check the selected PyTorch device and platform support before installing; don't silently change the pinned release to work around a conflict.
 
-## Reproduction status
-No runnable experiment has been added here yet. Pin model/data/simulator versions and exact commands before claiming reproduction. Begin in simulation or offline replay and save full failure traces. Keep heavy model weights and generated video outside Git; document their source, terms and checksums.
+## Smoke evaluation
+
+```sh
+.venv-robot/bin/lerobot-eval \
+  --policy.path=lerobot/diffusion_pusht \
+  --env.type=pusht \
+  --eval.n_episodes=10 \
+  --eval.batch_size=1 \
+  --policy.device=cpu
+```
+
+Try `mps` only if PyTorch exposes Apple MPS; use `cuda` on compatible NVIDIA hardware. Record actual device, wall-clock time and any errors. Once the smoke run succeeds, use at least 50 episodes for the main baseline. The [LeRobot evaluation guide](https://github.com/huggingface/lerobot/blob/main/AGENT_GUIDE.md) recommends 50 episodes for a more stable estimate. Record a seed only if the pinned runner supports setting it.
+
+## Evidence and data contract
+
+Save videos, logs and full traces under ignored `artifacts/`. Commit a small aggregate JSON/CSV summary. Record task and episode IDs, reset conditions, observation/action timing, action dimensions/units/bounds, success flag, policy and environment versions, device, timing and failure category. Keep upstream checkpoint and dataset terms with the record.
+
+## Completion gate
+
+A fresh environment can reproduce the command, episode evidence can be replayed, and task success is computed from the simulator signal. Report numerator/denominator and failures. This is a baseline evaluation, not training or reproduction of the policy research.
 
 ## Limitations
-No real robot required; synthetic/simulated data only to start.
 
-## Next step
-See the [Physical AI roadmap](../../docs/physical-ai-roadmap.md). Foundations are pulled in when needed, not completed as a fixed prerequisite chain.
+PushT is a 2D simulator. It does not establish 3D manipulation, generalization to other embodiments, real-robot performance or deployment safety. See the [execution roadmap](../../../docs/physical-ai-roadmap.md).

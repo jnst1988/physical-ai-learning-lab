@@ -1,46 +1,62 @@
 # Physical AI roadmap: video world models, VLA and deployment
 
-Updated 2026-10-27. The project studies **Physical AI systems that perceive, predict, decide and act in the physical world**. Robotics is the center of gravity, spanning manipulation, mobile robots and humanoids; autonomous driving is one important application, never the scope boundary.
+Updated 2026-10-27. The practical sequence below uses the published LeRobot 0.6.0 PushT evaluation interface as its first baseline. Physical AI remains broad across manipulation, mobile, humanoid and autonomous systems.
 
 ## Learning question
 
-Can a system use video and other observations to predict what different actions would do, connect those predictions and instructions to robot actions, evaluate the resulting behavior, then deploy it within a real robot's embodiment, latency, safety and compute constraints?
+Can a system predict how actions change the physical world, connect predictions and instructions to robot actions, evaluate the resulting behavior, and deploy within embodiment, latency, safety and compute constraints?
 
-## Main learning sequence
+## Execution plan
 
-| Order | Focus | Study output |
-| --- | --- | --- |
-| 1 | Robot and data foundations | Choose a simulated or recorded task; define embodiment, observations, action space, coordinate frames, data provenance and baseline |
-| 2 | Video world models | Study temporal prediction, action conditioning, consistency and video-as-planning; compare a future video with observed outcome |
-| 3 | VLA / VLAM policies | Trace vision, language, robot state and action-chunk interfaces in a pinned open model; inspect action units, normalization and embodiment assumptions |
-| 4 | Video-to-action bridge | Test whether candidate futures can rank action chunks; connect a learned or analytic inverse-dynamics/controller layer and close the loop in simulation |
-| 5 | Evaluation and robustness | Test unseen objects/tasks, disturbances, recovery, timing and distribution shift; record successful and failed episodes |
-| 6 | Deployment | Measure inference/control latency and compute, package a constrained policy server, add monitoring, watchdog, safe fallback and replayable handover |
-| 7 | Cross-embodiment comparison | Reuse evaluation contracts across arm, mobile, humanoid or driving setups; adapt action and observation interfaces explicitly |
+| Phase | Concrete work | Exit evidence | Compute gate |
+| --- | --- | --- | --- |
+| A / 024 | Isolated Python 3.12 environment; LeRobot 0.6.0; published PushT Diffusion Policy; 10-episode smoke run, then 50-episode evaluation | Exact command, package versions, device, replay evidence, success/failure report | Probe CPU/MPS/CUDA; record actual device and runtime |
+| B / 025 | Select one action-conditioned world model; compare prediction against actual continuation on saved episodes | Side-by-side clips, model revision/terms, task metrics, runtime and memory | If CUDA/memory unavailable, retain replay contract and mark full model inference blocked |
+| C / 026 | Select one LeRobot-supported VLA and run it on the same task interface | Action contract, model terms, matched episodes and failures | Check model card and device requirements before download |
+| D / 027 | Compare baseline, VLA and video-ranked candidate actions on matched seeds | Ablation with task success, recovery, violations and per-decision latency | Keep simulation as the action boundary |
+| E / 028 | Policy service, timeout/stale-observation injection and deployment-shaped profiling | Reproducible profile, fallback evidence and handover guide | Real robot is a separate future validation step |
 
-The first concrete project should be a **simulated tabletop robot manipulation benchmark** with a short set of tasks. It is small enough to run and inspect, while keeping the video prediction → VLA/action → control/deployment thread intact. Add mobile/humanoid embodiments after the evaluation and interface contracts work. Reuse the 017 YOLO study only if an experiment needs that detector; skip it otherwise.
+The short path is `024 -> saved PushT replay -> 025 prediction comparison`. The 024 baseline remains useful if full video inference is blocked by hardware. Keep latent-state prediction and pixel/video generation as distinct studies.
+
+## 024: Run the local baseline
+
+Create a separate Python 3.12 environment so simulator dependencies do not change the root learning environment:
+
+```sh
+uv venv --python 3.12 .venv-robot
+uv pip install --python .venv-robot/bin/python 'lerobot[pusht]==0.6.0'
+```
+
+On Windows use `.venv-robot\Scripts\python.exe`. LeRobot uses optional extras; `pusht` installs its simulator requirements. See the [official install guide](https://github.com/huggingface/lerobot/blob/main/docs/source/installation.mdx).
+
+Run a short smoke evaluation first:
+
+```sh
+.venv-robot/bin/lerobot-eval \
+  --policy.path=lerobot/diffusion_pusht \
+  --env.type=pusht \
+  --eval.n_episodes=10 \
+  --eval.batch_size=1 \
+  --policy.device=cpu
+```
+
+If the installed PyTorch supports Apple MPS, try `mps`; use `cuda` on a compatible NVIDIA setup. Record the device and errors. After the smoke run succeeds, evaluate at least 50 episodes with the same configuration. The published LeRobot guide recommends 50 for a more stable success-rate estimate. Preserve exact seed/config only where the runner exposes it; don't imply determinism when no seed was set. See the [official evaluation guide](https://github.com/huggingface/lerobot/blob/main/AGENT_GUIDE.md).
+
+Keep outputs under ignored `artifacts/`: episode videos, logs and full traces. Commit only a small aggregate report. For each episode capture task, ID, initial condition, observation/action timestamps, action units/bounds, success, environment/model revision, software versions, device, timing and failure category. Respect upstream checkpoint terms.
 
 ## Video and action are related but distinct
 
-Video prediction may show plausible futures without proving that a robot can execute them. A video generator can be a predictor, planner, or proposal evaluator; the action interface still needs embodiment-specific grounding, timing, controller limits and closed-loop verification. A VLA can emit action chunks without internally generating video. This roadmap treats joint video/action prediction as a research question, not an assumed capability.
+Latent models such as V-JEPA 2-AC predict representations that need not be decodable video; pixel/video generators produce visible futures. A generic text-to-video clip is not an action-conditioned robot world model. A plausible future does not show that it follows the specified action or obeys physics. Keep visual quality, task-state prediction and action execution as separate outcomes.
 
-## Just-in-time foundations
+## 025–028 procedure
 
-- Learn only the ML, perception, geometry or control mechanism that blocks the next experiment; numeric experiments 001–017 are not enrollment requirements.
-- Keep dataset/model provenance, split by task/episode where appropriate, pin exact upstream revisions and obey model/dataset terms.
-- Begin with simulator or offline policy interfaces. No generated future, model output or benchmark score alone authorizes real robot motion.
-- Report hardware, embodiment, camera configuration, control frequency, action scaling, warm/cold latency and failure cases. Do not infer deployment suitability from a notebook result.
+- **025:** pin one official model/checkpoint and license, freeze observation/action windows, save predicted and actual continuations side by side, measure task-state agreement, latency and memory. BWM is one pixel-video candidate; its published inference is CUDA-based and uses Wan2.2 TI2V 5B, so check local compute before downloading.
+- **026:** pick a LeRobot-supported VLA only after checking its revision, terms, cameras, task, action dimensions, normalization and device needs. Test one simulation episode before a matched comparison.
+- **027:** compare baseline, VLA, and the same action candidates with video-world-model ranking. Hold initial states/seeds/action limits fixed. Include model latency and failures; a video score never directly commands hardware.
+- **028:** profile an interface-shaped policy service; inject stale observations and timeouts; verify watchdog/fallback in simulation before considering a physical robot.
 
-## Research entry points
+## Scope and research context
 
-This is a selective reading map, not an endorsement or proof of results. Prefer the linked primary lab, paper or project source, and recheck revision, license and runtime constraints before choosing a study.
+Study robotics broadly. Start with a simple tabletop task, then compare another embodiment after the data and action contracts work. LeRobot is a data/policy/simulation/evaluation toolkit, not a single RL method. Its current release notes describe world-model policies alongside VLA policies and evaluation tools. Useful primary entry points: [LeRobot release 0.6.0](https://github.com/huggingface/blog/blob/main/lerobot-release-v060.md), [V-JEPA 2](https://github.com/facebookresearch/vjepa2), [VERA](https://vera.csail.mit.edu/), [OpenVLA](https://github.com/openvla/openvla), [RoboJEPA](https://github.com/facebookresearch/robo_jepa), and [Boundless World Model](https://github.com/boundless-large-model/boundless-world-model).
 
-- [V-JEPA 2 (Meta AI Research)](https://ai.meta.com/research/publications/v-jepa-2-self-supervised-video-models-enable-understanding-prediction-and-planning/): video-pretrained world model and robot planning direction.
-- [VERA (MIT CSAIL)](https://vera.csail.mit.edu/): video model with inverse dynamics for robot policies; useful to study the video-to-action bridge.
-- [OpenVLA paper](https://arxiv.org/abs/2406.09246) and [project](https://openvla.github.io/): open VLA as an inspectable policy study.
-- [τ0-WM project](https://tau0-wm.github.io/): unified video/action world-model research direction; treat reported claims as paper claims and verify released code/checkpoints before planning a reproduction.
-- [VLAM robotics survey](https://doi.org/10.1109/ACCESS.2025.3609980): map of VLA architectures, data, embodiment and evaluation topics.
-
-## Evidence and milestones
-
-Milestone A: execute a small simulated task with a transparent baseline and saved replay. Milestone B: run a pinned video/world-model or VLA study on a documented task and record real metrics. Milestone C: connect future prediction to action proposal/ranking and measure whether it helps closed-loop outcomes. Milestone D: profile a deployment-shaped inference/control loop on named hardware and implement safe failure behavior. Mark milestones complete only with artifacts and evidence.
+All model runs remain unclaimed until their exact command, hardware, terms and measured results are recorded. No video-model output alone establishes physical deployment safety.

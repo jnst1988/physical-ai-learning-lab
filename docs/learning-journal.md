@@ -69,3 +69,13 @@ Date / Experiment / Question / Prediction / Exact command and configuration / Ob
 **Evidence boundary:** These are learning frameworks and reading pointers only. This change does not reproduce or validate a model, robot policy, generated future, or deployment.
 
 **Next:** Choose a small simulated manipulation task and establish its task/data contract and transparent baseline before running any heavyweight model.
+
+## 2026-10-27 — Turn the Physical AI path into staged runs
+
+**Decision:** Establish LeRobot PushT pretrained-policy baseline before large video inference. Compare video world models and VLA on the same task, then test video-guided action selection.
+
+**Artifacts:** 024 now has an isolated setup, smoke and 50-episode protocol, data contract and evidence requirements. 025–028 specify compute gates, matched comparisons, failure tests and deployment profiling.
+
+**Evidence boundary:** Commands have not been run here. No model inference, rollout or deployment result is claimed.
+
+**Next:** Execute 024 on the available device, record the environment and episode results, then pick 025 based on the actual hardware.

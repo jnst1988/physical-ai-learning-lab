@@ -2,7 +2,7 @@
 
 ## Current priority — Physical AI across robot embodiments
 
-As of 2026-10-27, follow the [video world model and VLAM track](../experiments/07-video-world-models-and-vlam/README.md) and [Physical AI roadmap](physical-ai-roadmap.md). Start with task/data contracts, then video models and VLA/VLAM policy study, bridge to closed loop and deployment. Automotive is one domain case study. ML and perception are just-in-time foundations; 001–023 are not a required sequence.
+As of 2026-10-27, follow the [video world model and VLAM track](../experiments/07-video-world-models-and-vlam/README.md) and [Physical AI roadmap](physical-ai-roadmap.md). Start with the LeRobot PushT baseline (024), then video prediction (025) and VLA (026) on one task, a controlled closed-loop comparison (027), and deployment profiling (028). Automotive is one domain case study. ML and perception are just-in-time foundations; 001–023 are not a required sequence.
 
 ## Scope and status
 

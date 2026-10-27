@@ -1,13 +1,13 @@
 # Video World Models and VLAM for Physical AI
 
-This is the primary technical learning path: study predictive video/world models, vision-language-action policies, their connection to closed-loop behavior, and deployment. It covers robotics broadly; automotive/ADAS is one possible embodiment/domain alongside arms, mobile and humanoid robots.
+This is the primary technical track. First establish a shared LeRobot PushT baseline, then compare video world models and VLA policies on that task, connect prediction to closed-loop action, and profile deployment.
 
 | ID | Study | State |
 | --- | --- | --- |
-| 024 | Robot task and data contract | Framework; not implemented |
-| 025 | Video world models for robotics | Framework; not implemented |
-| 026 | Open VLA/VLAM policy study | Framework; not implemented |
-| 027 | Video futures to closed-loop action | Framework; not implemented |
-| 028 | Robot policy deployment profile | Framework; not implemented |
+| 024 | LeRobot 0.6.0 PushT pretrained-policy baseline | Runbook prepared; not run |
+| 025 | Action-conditioned video/latent world-model prediction | Planned |
+| 026 | LeRobot-supported VLA policy on the shared task | Planned |
+| 027 | Video futures to closed-loop action comparison | Planned |
+| 028 | Deployment-shaped profiling and failure behavior | Planned |
 
-Follow [the roadmap](../../docs/physical-ai-roadmap.md) and read [research entry points](../../docs/physical-ai-roadmap.md#research-entry-points). Start with 024 to establish an executable task and baseline, then select one available video model and one VLA implementation after checking current license and hardware constraints. The frameworks do not claim these models have been installed or reproduced.
+Start with [024](024-robot-task-and-data-contract/README.md) and the [execution roadmap](../../docs/physical-ai-roadmap.md). The runbook uses a separate Python 3.12 environment and a published checkpoint; it has not yet been executed here. Checkpoint and model licenses remain separate from this repository license.

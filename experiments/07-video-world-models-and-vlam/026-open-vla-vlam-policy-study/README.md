@@ -1,28 +1,12 @@
-# 026: Open VLA / VLAM Policy Study
+# 026: VLA policy study on the shared task
 
-**Priority:** Primary Physical AI learning path. **Status:** Framework only; implementation and measurements pending.
+**Status:** Planned after the 024 baseline.
 
-## Focus
-Language-conditioned vision-to-action policies.
+Choose a VLA supported by the pinned LeRobot release only after checking the checkpoint revision and terms, task/dataset, cameras, language input, state fields, action dimensions, normalization and device-memory needs.
 
-## Goal and hypothesis
-Trace a pinned policy from image/instruction/state input to action chunks and execute only in an isolated simulator.
+1. Run one PushT simulation episode and validate action shapes and bounds.
+2. Record which embodiment and action representation the checkpoint expects.
+3. Compare on the same initial conditions and seeds as 024 where supported; otherwise document why the comparison is unmatched.
+4. Report success, invalid actions, latency, memory and categorized failures beside the baseline.
 
-Hypothesis: a simple baseline and explicit task/embodiment contracts will make the study's contribution and failure modes measurable. This remains untested until an experiment is run.
-
-## Proposed architecture
-Model card/revision/terms, interface inspector, baseline rollout and action-unit tests.
-
-## Metrics and completion gate
-Task success, episode length, action validity, reset/recovery, inference and end-to-end latency.
-
-Completion evidence: Model-backed simulation rollout and failures are recorded; no weights/code license assumptions.
-
-## Reproduction status
-No runnable experiment has been added here yet. Pin model/data/simulator versions and exact commands before claiming reproduction. Begin in simulation or offline replay and save full failure traces. Keep heavy model weights and generated video outside Git; document their source, terms and checksums.
-
-## Limitations
-Embodiment/action normalization mismatches can invalidate results; simulator success is not real deployment.
-
-## Next step
-See the [Physical AI roadmap](../../docs/physical-ai-roadmap.md). Foundations are pulled in when needed, not completed as a fixed prerequisite chain.
+An out-of-domain checkpoint may fail because of task or embodiment mismatch. Preserve that finding rather than silently remapping dimensions. A simulator result is not real robot deployment.

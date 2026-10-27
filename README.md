@@ -8,7 +8,7 @@ Understand mechanisms, not just run demos. Each experiment starts with a questio
 
 ## Start here — Physical AI first
 
-Read the [Physical AI roadmap](docs/physical-ai-roadmap.md), then begin with [024 robot task and data contract](experiments/07-video-world-models-and-vlam/024-robot-task-and-data-contract/README.md). The primary path studies video world models and VLA/VLAM policies through simulation and measured deployment profiles. All new 024–028 entries are frameworks, not claimed model reproductions.
+Read the [Physical AI roadmap](docs/physical-ai-roadmap.md), then run [024 PushT baseline](experiments/07-video-world-models-and-vlam/024-robot-task-and-data-contract/README.md) with LeRobot 0.6.0. The primary path studies video world models and VLA/VLAM policies through simulation and measured deployment profiles. The 024 runbook has not yet been executed; 025–028 are staged plans.
 
 ### Existing runnable foundation demo
 
