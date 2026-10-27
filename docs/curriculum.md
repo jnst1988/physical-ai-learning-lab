@@ -1,8 +1,8 @@
 # Learning curriculum
 
-## Current priority — solution-first
+## Current priority — Physical AI across robot embodiments
 
-As of 2026-10-26, follow [018–023 Automotive AI Solutions](../experiments/06-automotive-ai-solutions/README.md) using the [priority roadmap](solution-first-roadmap.md). Start with 018 discovery and 019 knowledge assistant. All new solution labs are planned; 018 contains worked design drafts. ML fundamentals and perception are lower-priority references, and 001–017 are not entry requirements.
+As of 2026-10-27, follow the [video world model and VLAM track](../experiments/07-video-world-models-and-vlam/README.md) and [Physical AI roadmap](physical-ai-roadmap.md). Start with task/data contracts, then video models and VLA/VLAM policy study, bridge to closed loop and deployment. Automotive is one domain case study. ML and perception are just-in-time foundations; 001–023 are not a required sequence.
 
 ## Scope and status
 
@@ -29,7 +29,7 @@ Experiment 001 is implemented and verified. Experiment 017 (YOLO) has a runnable
 | [015: Behavior Cloning and Distribution Shift](../experiments/04-physical-ai/015-behavior-cloning-and-distribution-shift/README.md) | 004, 014 | Scaffold |
 | [016: Closed-Loop Evaluation and Failure Analysis](../experiments/04-physical-ai/016-closed-loop-evaluation-and-failure-analysis/README.md) | 012, 014, 015 | Scaffold |
 
-The four fundamentals stages build from differentiable mechanisms to representation, geometry, and closed-loop behavior. A prerequisite means you should explain and validate its key idea before progressing; it is not a claim that future code already imports it. Experiment 014 explicitly connects the mapping and dynamics tracks; 016 reconnects perception uncertainty with policy evaluation.
+The four foundation stages remain a useful reference sequence. Their prerequisites apply when following that deep-study path, not when entering the Physical AI model-study track.
 
 ## How to use each supporting framework
 

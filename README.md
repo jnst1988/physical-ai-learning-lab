@@ -1,14 +1,14 @@
 # Physical AI Learning Lab
 
-An open learning lab by **jnst1988**, now prioritizing automotive cloud and AI solution delivery: customer discovery, working PoCs, evaluation, architecture and handover. ML, perception and Physical AI mechanisms remain available as supporting study tracks.
+An open learning lab by **jnst1988** to study Physical AI: video world models, vision-language-action (VLA/VLAM) systems, closed-loop robot behavior and deployment across robotic embodiments. Autonomous driving is one application area among several.
 
 ## Vision
 
 Understand mechanisms, not just run demos. Each experiment starts with a question, states a falsifiable hypothesis, implements the smallest useful system, measures results, and explains limitations. Learn locally; share code, evidence, and learning notes on GitHub.
 
-## Start here — solution-first
+## Start here — Physical AI first
 
-Begin with the [priority roadmap](docs/solution-first-roadmap.md) and [018 customer discovery](experiments/06-automotive-ai-solutions/018-customer-discovery-and-solution-design/README.md), then build [019 automotive knowledge assistant](experiments/06-automotive-ai-solutions/019-automotive-knowledge-assistant/README.md). These are design/implementation plans; no new assistant or cloud deployment is claimed. You do not need to finish 001–017 first. See the [role mapping and source limits](docs/role-alignment.md).
+Read the [Physical AI roadmap](docs/physical-ai-roadmap.md), then begin with [024 robot task and data contract](experiments/07-video-world-models-and-vlam/024-robot-task-and-data-contract/README.md). The primary path studies video world models and VLA/VLAM policies through simulation and measured deployment profiles. All new 024–028 entries are frameworks, not claimed model reproductions.
 
 ### Existing runnable foundation demo
 
@@ -34,7 +34,7 @@ You can explore YOLO alongside the foundations; finishing all 16 is not required
 
 ## Supporting roadmap
 
-The primary track is [018–023 Automotive AI Solutions](experiments/06-automotive-ai-solutions/README.md). The numbered directories below remain stable; directory numbers do not determine study priority.
+The primary track is [024–028 Video World Models and VLAM for Physical AI](experiments/07-video-world-models-and-vlam/README.md). The 018–023 automotive enterprise track remains a domain case study.
 
 | Stage | Questions | Planned experiments | Status |
 | --- | --- | --- | --- |
@@ -63,7 +63,8 @@ For the optional foundations path, start with [Experiment 001](experiments/01-ml
 ## Repository map
 
 - `src/learning_lab/`: reusable, inspectable implementations.
-- `experiments/06-automotive-ai-solutions/`: primary solution-delivery track.
+- `experiments/07-video-world-models-and-vlam/`: primary video/VLA robotics research track.
+- `experiments/06-automotive-ai-solutions/`: automotive enterprise case study.
 - `experiments/`: preserved foundations, physical mechanisms and model studies.
 - `templates/solution/`: customer-facing delivery and evidence checklist.
 - `tests/`: independent correctness and convergence checks.

@@ -57,3 +57,15 @@ Date / Experiment / Question / Prediction / Exact command and configuration / Ob
 **Evidence:** Design and planning only. No assistant, model/API call, cloud resource, data pipeline or simulation has been implemented by this change. Existing YOLO additions from the remote main branch were preserved.
 
 **Next:** Review 018 scope and implement the first offline retrieval slice of 019 before selecting a real model or provisioning cloud resources.
+
+## 2026-10-27 — Broaden scope to Physical AI and video/VLAM
+
+**Decision:** Make Physical AI across robotics the repository's main objective. Study video world models and VLA/VLAM policies as connected but distinct threads, with closed-loop evaluation and deployment as the bridge. Automotive is one application area.
+
+**Artifacts:** Added roadmap and study frameworks 024–028. Recast the automotive cloud/enterprise track as a case study, and updated the repository home page and curriculum.
+
+**Research basis:** Linked primary pages for V-JEPA 2, VERA, OpenVLA and τ0-WM, plus a VLA survey. See roadmap. Model availability, exact versions, licenses, compute requirements and reproducibility must be rechecked when selecting an implementation.
+
+**Evidence boundary:** These are learning frameworks and reading pointers only. This change does not reproduce or validate a model, robot policy, generated future, or deployment.
+
+**Next:** Choose a small simulated manipulation task and establish its task/data contract and transparent baseline before running any heavyweight model.

@@ -1,6 +1,6 @@
-# Automotive AI Solutions — primary learning track
+# Automotive AI Solutions — automotive case study
 
-Start here for customer-facing cloud and AI solution architecture. Learn by delivering a bounded automotive PoC and explaining its architecture, evidence and tradeoffs.
+This track is an optional domain case study in customer-facing cloud and AI solution architecture. The project primary objective is broader Physical AI research; start at the [video world model and VLAM track](../07-video-world-models-and-vlam/README.md). Learn by delivering a bounded automotive PoC and explaining its architecture, evidence and tradeoffs.
 
 | Priority | Lab | Evidence state |
 | --- | --- | --- |
