@@ -8,7 +8,7 @@ Understand mechanisms, not just run demos. Each experiment starts with a questio
 
 ## Start here — Physical AI first
 
-Read the [Physical AI roadmap](docs/physical-ai-roadmap.md), then run [018 PushT baseline](experiments/06-video-world-models-and-vlam/018-robot-task-and-data-contract/README.md) with LeRobot 0.6.0. The sequence then evaluates VLA adaptation (019), video/world-model approaches (020), compatible closed-loop methods (021), and deployment profiles (022). The 018 runbook has not yet been executed; 019–022 are staged plans.
+Read the [Physical AI roadmap](docs/physical-ai-roadmap.md), then run [018 PushT baseline](experiments/06-video-world-models-and-vlam/018-robot-task-and-data-contract/README.md) with LeRobot 0.6.0. Next, [019 evaluates VLA adaptation](experiments/06-video-world-models-and-vlam/019-vla-policy-adaptation/README.md), while [020 tests the video-to-action chain](experiments/06-video-world-models-and-vlam/020-video-world-model-study/README.md): generate a visual plan, recover robot actions with an IDM or policy, execute bounded steps in simulation, and replan from new observations. [021 compares compatible methods](experiments/06-video-world-models-and-vlam/021-video-to-action-closed-loop/README.md), then 022 profiles deployment behavior. Generated video is a plan or prediction; it is not itself a motor command. DREAMGEN-style synthetic training data is an optional extension after the core chain works. The 018 runbook has not yet been executed; 019–022 are staged plans.
 
 ### Existing runnable foundation demo
 
@@ -34,7 +34,7 @@ You can explore YOLO alongside the foundations; finishing all 16 is not required
 
 ## Supporting roadmap
 
-The primary track is [018–022 Video World Models and VLAM for Physical AI](experiments/06-video-world-models-and-vlam/README.md).
+The primary track is [018–022 Video World Models and VLAM for Physical AI](experiments/06-video-world-models-and-vlam/README.md). Its hands-on video-model question is whether a generated visual future can be translated into valid actions and improved through closed-loop feedback.
 
 | Stage | Questions | Planned experiments | Status |
 | --- | --- | --- | --- |
@@ -63,7 +63,7 @@ For the optional foundations path, start with [Experiment 001](experiments/01-ml
 ## Repository map
 
 - `src/learning_lab/`: reusable, inspectable implementations.
-- `experiments/06-video-world-models-and-vlam/`: primary video/VLA robotics research track.
+- `experiments/06-video-world-models-and-vlam/`: primary VLA, video-to-action and robotics research track.
 - `experiments/`: preserved foundations, physical mechanisms and model studies.
 - `tests/`: independent correctness and convergence checks.
 - `templates/experiment/`: a repeatable fundamentals experiment structure.
