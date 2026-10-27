@@ -2,7 +2,7 @@
 
 ## Current priority — Physical AI across robot embodiments
 
-As of 2026-10-27, follow the [video world model and VLAM track](../experiments/06-video-world-models-and-vlam/README.md) and [Physical AI roadmap](physical-ai-roadmap.md). The broader learning arc begins with perception problems well represented in autonomous driving, then transfers spatial and temporal reasoning into robotics: establish the LeRobot PushT task/data baseline (018), evaluate an adapted VLA where the task interface allows a fair comparison (019), study one video/world-model route (020), run a closed-loop comparison only across compatible methods (021), then profile deployment (022). ML and perception are just-in-time foundations; 001–017 are not a required sequence.
+As of 2026-10-27, follow the [video world model and VLAM track](../experiments/06-video-world-models-and-vlam/README.md) and [Physical AI roadmap](physical-ai-roadmap.md). The broader learning arc begins with perception problems well represented in autonomous driving, then transfers spatial and temporal reasoning into robotics: establish the LeRobot PushT task/data baseline (018), evaluate an adapted VLA where the task interface allows a fair comparison (019), test visual-plan generation and action recovery as a complete video-to-action loop (020), compare compatible methods with and without closed-loop replanning (021), then profile deployment (022). ML and perception are just-in-time foundations; 001–017 are not a required sequence.
 
 ## Scope and status
 

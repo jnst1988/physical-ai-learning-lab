@@ -1,31 +1,36 @@
-# 020: Video world models and video-to-action approaches
+# 020: From generated video plans to robot actions
 
-**Status:** Planned after the task/data contract; choose one implementable route after checking data and compute.
+**Status:** Planned after 018 establishes the task/data contract. Begin with a small, reproducible video-to-action slice; treat large-scale model training and synthetic-data scaling as extensions.
 
-## Question
+## Learning question
 
-How can a model use visual futures to support physical action? Keep three research routes distinct, because they predict different things and need different evidence.
+Can a video model turn an observation and task instruction into a useful visual plan, can a robot-specific action-recovery module translate that plan into executable controls, and does repeated observation and replanning correct errors?
 
-| Route | Model input/output | What it can establish | Example research entry points |
-| --- | --- | --- | --- |
-| Action-conditioned world model | Current observations plus candidate actions → future pixels or latent state | Whether a specified action predicts a useful future | [Boundless World Model](https://github.com/boundless-large-model/boundless-world-model), [V-JEPA 2](https://github.com/facebookresearch/vjepa2), [RoboJEPA](https://github.com/facebookresearch/robo_jepa) |
-| Visual plan → action | Task/instruction and observation → future visual plan; an inverse-dynamics model or policy recovers actions | Whether a visual trajectory can serve as a task plan and be translated into control | [UniPi](https://research.google/blog/unipi-learning-universal-policies-via-text-guided-video-generation/), [Gen2Act](https://homangab.github.io/gen2act/), [VERA](https://vera.csail.mit.edu/) |
-| Joint world-action model | Video/state and action modeled together, potentially with action generation or evaluation | Whether joint modeling helps prediction, action proposals or candidate evaluation | [Unified World Models](https://www.roboticsproceedings.org/rss21/p015.html), [OpenWAM](https://openwam.stanford.edu/), [τ₀-WM](https://www.max-robotics.com/en/research/publications/cmpw9c4a0001mqv28tb2kjc5b) |
+The core system is **video plan → action recovery → bounded execution → new observation → replan**. The video model usually proposes a high-level visual future; an inverse-dynamics model (IDM), action policy or controller maps that future to the robot's action space. Do not treat generated pixels as motor commands.
 
-These are complementary approaches, not three interchangeable model names. A generic text-to-video model is not an action-conditioned robot world model unless it accepts a defined robot action and its prediction is evaluated against that action's physical outcome. A plausible-looking clip is not evidence of action control or physical consistency.
+## Practical experiment slices
 
-## Recommended hands-on scope
+1. **Plan generation:** Condition on an initial observation and instruction; save the generated future. Measure instruction/goal alignment, initial-scene consistency, object identity and state continuity, and physical plausibility. Keep these results separate from image/video quality metrics.
+2. **Action recovery:** Pass the plan and current observation to an IDM or policy. Record the embodiment, action units/bounds, action horizon, timing and any robot-specific calibration. Measure whether the recovered action sequence follows the plan in the simulator.
+3. **Closed-loop execution:** Execute only a bounded action chunk in simulation, observe the new state, and generate/recover the next chunk. Compare open-loop plan execution with receding-horizon replanning. Track task success, plan adherence, recovery after mismatch and latency.
 
-Implement one route deeply, selected by available task data and compute. Start with action-conditioned prediction because 018 supplies action-labeled episodes; choose either pixel/video prediction or latent prediction and state which target is evaluated. Treat visual-plan-to-action and joint world-action models as comparison tracks until their data and action interfaces are available. A small local pipeline prototype is useful for checking video/action alignment, but label it clearly if it does not run the research model.
+Use 018's PushT contract only if the chosen video model and action-recovery module support its camera and action interfaces. VERA is a promising implementation candidate to inspect because its project documents a video planner paired with an embodiment-specific Jacobian IDM and includes PushT materials. Treat its current code, checkpoint, data, license and compute needs as a compatibility gate, not a guarantee of a lightweight local run. UniPi is a useful reference for text-guided video trajectories followed by inverse dynamics; Gen2Act is a related reference where generated human videos condition a robot policy.
 
-## Procedure
+## Research map
 
-1. For each candidate, pin the official code/checkpoint revision, license, data requirements and hardware setup before obtaining weights.
-2. Document inputs, outputs, observation history, action horizon, frame rate, camera/viewpoint and robot embodiment. Confirm that actions are actually model inputs or outputs as claimed.
-3. Freeze windows from the 018 episode contract. Compare predictions with the actual simulator continuation for the same initial observation and action sequence.
-4. Report task-state/object-goal agreement separately from pixel similarity; for visual-plan approaches, also measure whether recovered actions reach the planned state. Record inference time, memory and failures.
-5. Keep all candidate action evaluation in simulation. Do not let an open-loop generated video control a physical robot.
+| Research role | What to study | Representative work |
+| --- | --- | --- |
+| Video trajectory as a plan | Generate a future visual trajectory from observation and language, then infer actions | [UniPi](https://research.google/blog/unipi-learning-universal-policies-via-text-guided-video-generation/), [Gen2Act](https://homangab.github.io/gen2act/), [VERA](https://vera.csail.mit.edu/) |
+| Generated robot data | Adapt a video model to an embodiment, generate task videos, recover pseudo-actions and train a visuomotor policy | [DREAMGEN](https://research.nvidia.com/labs/gear/dreamgen/) |
+| Video and action learned together | Compare joint or composable prediction/control structures | [Unified World Models](https://www.roboticsproceedings.org/rss21/p015.html), [Unified Video Action](https://unified-video-action-model.github.io/), [OpenWAM](https://openwam.stanford.edu/), [τ₀-WM](https://tau0-wm.github.io/) |
+| Action-conditioned prediction | Predict future pixels or latent state given candidate robot actions; useful for scoring and model-predictive control | [Boundless World Model](https://github.com/boundless-large-model/boundless-world-model), [V-JEPA 2](https://github.com/facebookresearch/vjepa2), [RoboJEPA](https://github.com/facebookresearch/robo_jepa) |
 
-## Compute gate and exit evidence
+These roles can overlap within a system, but they answer different questions. A generic text-to-video generator is not an action-conditioned robot world model unless defined robot actions condition its predictions and those predictions are checked against the resulting physical outcomes.
 
-Check current official requirements before downloading large checkpoints. If local hardware is insufficient, use a small compatible model, a rented GPU, or retain the data/metric pipeline and record the blocker; distinguish each from reproducing the selected research method. Exit evidence is a pinned model run on task data, actual-versus-predicted or plan-versus-execution results, explicit metrics and measured resource use. Otherwise report exactly what remains unrun.
+## Optional extension: DREAMGEN-style synthetic trajectories
+
+After plan generation and action recovery work on a small task, test whether generated videos plus pseudo-actions can augment policy training. Keep real demonstration data and synthetic trajectories distinguishable. Compare a policy trained on real demonstrations alone with one trained on the same demonstrations plus synthetic data, using held-out tasks/scenes and the same evaluation protocol. Measure pseudo-action validity and downstream policy success; video plausibility alone is not evidence that synthetic data helps. This is a separate extension, not required to complete the core 020 experiment.
+
+## Compute, evidence and safety gates
+
+Before downloading weights, pin official code/checkpoint revisions, terms, data requirements and hardware needs. If a full model is too large, use a rented GPU or build a clearly labeled interface prototype; neither should be reported as reproducing the selected research method. Save planned frames, recovered actions, actual simulator rollouts, task metrics, failure cases, inference time and memory. All action execution stays in simulation for this experiment; a physical robot requires separate validation and safety controls.

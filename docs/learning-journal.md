@@ -92,8 +92,16 @@ Date / Experiment / Question / Prediction / Exact command and configuration / Ob
 
 **Reason:** A VLA checkpoint is often tied to a particular embodiment, camera setup, observation fields, action representation and data. Testing it on PushT without checking compatibility would make 019 hard to interpret. The new sequence makes VLA applicability visible before the video-model study and does not claim a fair shared benchmark when interfaces differ.
 
-**Implementation note:** 020 separates action-conditioned world models, visual-plan-to-action methods and joint world-action models. Only one route needs a hands-on implementation initially; generic text-to-video output is not treated as action-conditioned robot prediction. 021 should include only compatible comparison arms, with unmatched tasks reported separately.
+**Implementation note at that point (superseded by the decision below):** 020 separated action-conditioned world models, visual-plan-to-action methods and joint world-action models. The later decision makes visual-plan-to-action the hands-on core and retains the other routes as related comparisons; generic text-to-video output is not treated as robot control.
 
 **Perception bridge:** Keep 017 YOLO as the first open-model study, then reserve capability-focused placeholders for video tracking, promptable segmentation, depth/geometry and BEV/occupancy. This covers the key transition from autonomous-driving perception to spatial/temporal state and robot action without requiring every detector or foundation model. The placeholder table is in [05 Open-source Model Studies](../experiments/05-open-source-model-studies/README.md); later IDs will be assigned when an experiment is actually started.
 
 **Next:** Run the 018 LeRobot PushT baseline and record actual episode results before beginning model comparisons.
+
+## 2026-10-27 — Center video-model practice on plan-to-action execution
+
+**Decision:** Refocus 020 on a complete video-to-action chain: generate an instruction-conditioned visual plan, recover embodiment-specific actions with an IDM or policy, execute bounded chunks in simulation, and replan from new observations. Keep action-conditioned prediction and joint world-action models as related comparison directions. Treat DREAMGEN-style synthetic trajectory generation as an optional extension after the core chain works.
+
+**Reason:** Video generation becomes meaningful for Physical AI when its imagined future can be translated into valid robot actions and corrected through feedback. Plan quality, action recovery and closed-loop task success must be evaluated as separate stages. Generated visual quality alone does not show that a robot can execute the plan.
+
+**Implementation note:** Use VERA as a candidate plan-plus-Jacobian-IDM reference because its project documents PushT materials, after checking current compute, data and license requirements. In 021, compare compatible baseline, VLA and video-to-action systems; where possible compare open-loop execution with receding-horizon replanning. The earlier 020 suggestion to make action-conditioned prediction the hands-on core is superseded.

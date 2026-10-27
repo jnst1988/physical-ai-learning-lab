@@ -1,25 +1,32 @@
-# 021: Closed-loop comparison of VLA and video-based approaches
+# 021: Closed-loop comparison of VLA and video-to-action systems
 
-**Status:** Planned after at least one policy from 019 and one method from 020 can run on a defined task. A shared comparison is optional when interfaces do not match.
+**Status:** Planned after at least one policy from 019 and a complete plan-to-action pipeline from 020 run on a defined task. Compare only compatible methods under the same task contract.
 
 ## Question
 
-Under a controlled simulation protocol, what does each approach contribute to task success, instruction following, adaptation to changed scenes, and recovery from errors? The goal is to understand the system-level tradeoffs, not to claim one universal winner.
+Does adding a generated visual plan and action-recovery module improve task completion, instruction following or recovery over a task-specialized policy and a VLA? What costs in latency and failure modes does the added planning stage introduce?
 
 ## Comparison arms
 
-- **Task-specialized baseline:** the policy and task contract from 018.
-- **VLA policy:** one compatible or explicitly adapted policy from 019.
-- **One video-based route:** one method from 020, such as action-conditioned candidate evaluation or visual-plan-to-action with a documented action-recovery module.
+- **Task-specialized baseline:** policy and task contract from 018.
+- **VLA:** one compatible or explicitly adapted policy from 019.
+- **Video-to-action:** one complete 020 pipeline: visual plan, action recovery and bounded execution.
 
-Only include arms that can be evaluated on the same task, observation/action contract, resets, action bounds and episode horizon. If the VLA requires another benchmark, report its result separately; do not merge incompatible success rates into one ranking. Select one video route for the main experiment rather than implying every world-model family is tested.
+If available, ablate the video-to-action arm into: (a) open-loop plan plus recovered actions, and (b) receding-horizon execution that observes the result and replans. This isolates the contribution of closed-loop feedback. Keep a generated plan, its recovered actions and the resulting simulator trajectory as separate artifacts. A visual plan that looks convincing but cannot be translated or executed is a planning result, not a successful control result.
+
+Only include arms sharing the task, observation/action contract, resets, action bounds and episode horizon. If the VLA or video planner requires another benchmark, report it separately rather than combining incompatible success rates.
 
 ## Protocol and measures
 
-Freeze held-out initial conditions and instructions before evaluation. Run closed-loop: act for a bounded horizon, observe the simulator, then replan. For a visual-plan method, record the plan and the recovered action separately. For action-conditioned prediction, compare predicted candidate outcomes with the actual outcomes of those candidates.
+Freeze held-out initial conditions, instructions and scene variations. Execute bounded action chunks, observe the simulator and replan where supported. Measure:
 
-Measure task success, instruction following, scene/task generalization, invalid actions and limit violations, action recovery error when applicable, prediction/plan adherence, failure categories, recovery rate, per-decision latency and total episode time. Report episode counts and uncertainty; include compute and model revision.
+- **Plan quality:** instruction/goal alignment, scene and object-state consistency, contact/physics plausibility.
+- **Action translation:** recovered action validity, action bounds, plan-following error and action-recovery latency.
+- **Closed-loop outcome:** task success, instruction following, held-out scene/task generalization, recovery after plan/observation mismatch, invalid actions and failure categories.
+- **System cost:** video generation latency, action-recovery latency, total decision and episode time, peak memory and compute.
+
+Report episode counts, uncertainty, model revisions, data splits and any fine-tuning. For candidate-scoring or action-conditioned world models, additionally compare predicted candidate rankings with actual simulator outcomes. Keep pixel/video quality separate from downstream task performance.
 
 ## Safety boundary and interpretation
 
-All proposed actions remain in simulation. A generated future or model score alone does not establish physical safety. Report whether the video component improves a closed-loop measure over the baseline and VLA, what latency it adds, and which failures remain. If interfaces or data differ, explain the limitation instead of asserting a direct comparison.
+All proposed actions remain in simulation. A generated future, video score or action ranking alone does not establish physical safety. Report whether the full video-to-action pipeline improves closed-loop outcomes over 018 and 019, what feedback adds over open-loop execution, what latency it adds and which failures remain. Treat real-robot evaluation as a separate future stage requiring embodiment-specific safeguards.
