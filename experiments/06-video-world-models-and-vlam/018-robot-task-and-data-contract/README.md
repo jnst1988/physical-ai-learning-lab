@@ -4,7 +4,7 @@
 
 ## Purpose
 
-Establish a repeatable simulator, policy, episode, video and evaluation contract before adding video prediction or a VLA. This is the shared benchmark for 019–021.
+Establish a repeatable simulator, policy, episode, video and evaluation contract before adding a VLA or video/world-model method. This is the task-specific baseline for 019–021; later studies share it only when their interfaces are compatible.
 
 ## Isolated environment
 
@@ -33,6 +33,10 @@ Try `mps` only if PyTorch exposes Apple MPS; use `cuda` on compatible NVIDIA har
 ## Evidence and data contract
 
 Save videos, logs and full traces under ignored `artifacts/`. Commit a small aggregate JSON/CSV summary. Record task and episode IDs, reset conditions, observation/action timing, action dimensions/units/bounds, success flag, policy and environment versions, device, timing and failure category. Keep upstream checkpoint and dataset terms with the record.
+
+## Compatibility gate for later experiments
+
+Before calling a result comparable with this baseline, check and record: task and embodiment; camera count, viewpoint and image size; observation/state fields; language input; action dimensions, units, bounds and temporal horizon; normalization; control frequency; reset/evaluation protocol; checkpoint and data license; and compute/inference requirements. Any required adaptation or fine-tuning must be described and measured. If a model cannot meet the same task contract, use a task it supports and label the comparison as separate rather than forcing an undocumented action remapping.
 
 ## Completion gate
 

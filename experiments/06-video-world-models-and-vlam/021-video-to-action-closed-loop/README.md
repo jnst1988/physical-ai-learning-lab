@@ -1,9 +1,25 @@
-# 021: Video futures to closed-loop action
+# 021: Closed-loop comparison of VLA and video-based approaches
 
-**Status:** Planned after a functioning 018 baseline and usable 019 predictor; 020 comparison recommended.
+**Status:** Planned after at least one policy from 019 and one method from 020 can run on a defined task. A shared comparison is optional when interfaces do not match.
 
-Compare (A) the baseline, (B) VLA, and (C) the same action candidates ranked with a video/world-model score. Hold initial states, instructions, seeds, action limits and episode horizon fixed. Freeze the selection rule before evaluation.
+## Question
 
-Check whether predicted object/goal changes match the simulator, and whether predicted ranking matches actual outcomes. Measure success, recovery, invalid/action-limit violations, prediction and decision latency, and episode duration. Include plausible-but-physically-wrong predictions and timeouts.
+Under a controlled simulation protocol, what does each approach contribute to task success, instruction following, adaptation to changed scenes, and recovery from errors? The goal is to understand the system-level tradeoffs, not to claim one universal winner.
 
-Run all candidate actions inside simulation. A video score alone must never command a real robot. The exit report should answer whether world-model ranking improves closed-loop results over B, including failures and uncertainty. If it adds latency without better outcomes, report that.
+## Comparison arms
+
+- **Task-specialized baseline:** the policy and task contract from 018.
+- **VLA policy:** one compatible or explicitly adapted policy from 019.
+- **One video-based route:** one method from 020, such as action-conditioned candidate evaluation or visual-plan-to-action with a documented action-recovery module.
+
+Only include arms that can be evaluated on the same task, observation/action contract, resets, action bounds and episode horizon. If the VLA requires another benchmark, report its result separately; do not merge incompatible success rates into one ranking. Select one video route for the main experiment rather than implying every world-model family is tested.
+
+## Protocol and measures
+
+Freeze held-out initial conditions and instructions before evaluation. Run closed-loop: act for a bounded horizon, observe the simulator, then replan. For a visual-plan method, record the plan and the recovered action separately. For action-conditioned prediction, compare predicted candidate outcomes with the actual outcomes of those candidates.
+
+Measure task success, instruction following, scene/task generalization, invalid actions and limit violations, action recovery error when applicable, prediction/plan adherence, failure categories, recovery rate, per-decision latency and total episode time. Report episode counts and uncertainty; include compute and model revision.
+
+## Safety boundary and interpretation
+
+All proposed actions remain in simulation. A generated future or model score alone does not establish physical safety. Report whether the video component improves a closed-loop measure over the baseline and VLA, what latency it adds, and which failures remain. If interfaces or data differ, explain the limitation instead of asserting a direct comparison.

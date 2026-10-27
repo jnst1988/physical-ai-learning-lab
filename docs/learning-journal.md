@@ -84,7 +84,15 @@ Date / Experiment / Question / Prediction / Exact command and configuration / Ob
 
 **Decision:** Remove the Automotive AI Solutions 018–023 branch so the repository has one clear Physical AI learning path.
 
-**Structure:** The PushT baseline is now 018, video world-model study 019, VLA study 020, video-to-action closed loop 021, and deployment profile 022. Historical 2026-10-26 notes describe a previous direction and are retained as project history.
+**Structure at that point (superseded by the 2026-10-27 decision below):** The PushT baseline was 018, video world-model study 019, VLA study 020, video-to-action closed loop 021, and deployment profile 022. Earlier notes are retained as project history.
+
+## 2026-10-27 — Reorder VLA and video/world-model practice
+
+**Decision:** Keep 018 as the task/data contract and task-specialized baseline; move VLA adaptation and evaluation to 019; organize video/world-model routes in 020; reserve 021 for closed-loop comparison when task and action interfaces are compatible; keep 022 for deployment profiling.
+
+**Reason:** A VLA checkpoint is often tied to a particular embodiment, camera setup, observation fields, action representation and data. Testing it on PushT without checking compatibility would make 019 hard to interpret. The new sequence makes VLA applicability visible before the video-model study and does not claim a fair shared benchmark when interfaces differ.
+
+**Implementation note:** 020 separates action-conditioned world models, visual-plan-to-action methods and joint world-action models. Only one route needs a hands-on implementation initially; generic text-to-video output is not treated as action-conditioned robot prediction. 021 should include only compatible comparison arms, with unmatched tasks reported separately.
 
 **Perception bridge:** Keep 017 YOLO as the first open-model study, then reserve capability-focused placeholders for video tracking, promptable segmentation, depth/geometry and BEV/occupancy. This covers the key transition from autonomous-driving perception to spatial/temporal state and robot action without requiring every detector or foundation model. The placeholder table is in [05 Open-source Model Studies](../experiments/05-open-source-model-studies/README.md); later IDs will be assigned when an experiment is actually started.
 
