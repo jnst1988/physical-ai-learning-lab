@@ -8,7 +8,7 @@ Understand mechanisms, not just run demos. Each experiment starts with a questio
 
 ## Start here — Physical AI first
 
-Read the [Physical AI roadmap](docs/physical-ai-roadmap.md), then run [018 PushT baseline](experiments/07-video-world-models-and-vlam/018-robot-task-and-data-contract/README.md) with LeRobot 0.6.0. The primary path studies video world models and VLA/VLAM policies through simulation and measured deployment profiles. The 018 runbook has not yet been executed; 019–022 are staged plans.
+Read the [Physical AI roadmap](docs/physical-ai-roadmap.md), then run [018 PushT baseline](experiments/06-video-world-models-and-vlam/018-robot-task-and-data-contract/README.md) with LeRobot 0.6.0. The primary path studies video world models and VLA/VLAM policies through simulation and measured deployment profiles. The 018 runbook has not yet been executed; 019–022 are staged plans.
 
 ### Existing runnable foundation demo
 
@@ -34,7 +34,7 @@ You can explore YOLO alongside the foundations; finishing all 16 is not required
 
 ## Supporting roadmap
 
-The primary track is [018–022 Video World Models and VLAM for Physical AI](experiments/07-video-world-models-and-vlam/README.md).
+The primary track is [018–022 Video World Models and VLAM for Physical AI](experiments/06-video-world-models-and-vlam/README.md).
 
 | Stage | Questions | Planned experiments | Status |
 | --- | --- | --- | --- |
@@ -63,7 +63,7 @@ For the optional foundations path, start with [Experiment 001](experiments/01-ml
 ## Repository map
 
 - `src/learning_lab/`: reusable, inspectable implementations.
-- `experiments/07-video-world-models-and-vlam/`: primary video/VLA robotics research track.
+- `experiments/06-video-world-models-and-vlam/`: primary video/VLA robotics research track.
 - `experiments/`: preserved foundations, physical mechanisms and model studies.
 - `tests/`: independent correctness and convergence checks.
 - `templates/experiment/`: a repeatable fundamentals experiment structure.

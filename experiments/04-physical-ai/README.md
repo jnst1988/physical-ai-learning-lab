@@ -1,6 +1,6 @@
 # Physical AI
 
-**Priority update (2026-10-27):** Physical AI across robotic embodiments is the repository focus. Start with the [video world model and VLAM track](../07-video-world-models-and-vlam/README.md); use these interpretable simulation and control labs when needed.
+**Priority update (2026-10-27):** Physical AI across robotic embodiments is the repository focus. Start with the [video world model and VLAM track](../06-video-world-models-and-vlam/README.md); use these interpretable simulation and control labs when needed.
 
 Follow the experiments in order; prerequisites may cross stages. All experiments after 001 are learning frameworks awaiting implementation.
 
@@ -15,7 +15,7 @@ See the [full curriculum](../../docs/curriculum.md) for the learning workflow an
 
 ## Predictive video and VLA connections
 
-The advanced model path is in [07-video-world-models-and-vlam](../07-video-world-models-and-vlam/README.md). See the [roadmap](../../docs/physical-ai-roadmap.md).
+The advanced model path is in [06-video-world-models-and-vlam](../06-video-world-models-and-vlam/README.md). See the [roadmap](../../docs/physical-ai-roadmap.md).
 
 ## Real-model connections
 

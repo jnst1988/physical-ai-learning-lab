@@ -1,6 +1,6 @@
 # Spatial AI
 
-**Priority update:** This is a supporting study track. Use it as a just-in-time foundation for the primary [Physical AI video/world-model and VLA track](../07-video-world-models-and-vlam/README.md).
+**Priority update:** This is a supporting study track. Use it as a just-in-time foundation for the primary [Physical AI video/world-model and VLA track](../06-video-world-models-and-vlam/README.md).
 
 Follow the experiments in order; prerequisites may cross stages. All experiments after 001 are learning frameworks awaiting implementation.
 

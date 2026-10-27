@@ -1,6 +1,6 @@
 # Open-source model studies
 
-**Priority update:** This is a supporting study track. Use it as a just-in-time foundation for the primary [Physical AI video/world-model and VLA track](../07-video-world-models-and-vlam/README.md).
+**Priority update:** This is a supporting study track. Use it as a just-in-time foundation for the primary [Physical AI video/world-model and VLA track](../06-video-world-models-and-vlam/README.md).
 
 **Status: learning framework only.** This stage complements, rather than replaces, Experiments 001–016.
 
