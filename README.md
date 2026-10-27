@@ -51,6 +51,20 @@ See the [full curriculum and completion checklist](docs/curriculum.md), [concept
 
 Prefer to experiment with a real detector before diving into reverse-mode autodiff? [Experiment 017 — YOLO11n](experiments/05-open-source-model-studies/017-yolo/README.md) has a pinned, isolated first-inference command for Mac/CPU. It outputs an annotated image and JSON detection manifest after you execute it locally. This is not a model accuracy benchmark.
 
+## Primary Physical AI experiments (018–022)
+
+These experiments form the main project path. Each step answers a different question; the sequence does not assume that every VLA or video model supports the same robot, task or action interface. **All five are currently documented but not yet run.**
+
+| Experiment | Its role in the learning path | Evidence to produce | Status |
+| --- | --- | --- | --- |
+| [018 — PushT baseline and robot data contract](experiments/06-video-world-models-and-vlam/018-robot-task-and-data-contract/README.md) | Establish a repeatable simulator task, episode format and task-specialized Diffusion Policy baseline. This is the reference for later comparisons when interfaces match. | Reproducible evaluation, episode videos/logs, success and failure counts, observation/action contract, device and timing | Runbook prepared; not executed |
+| [019 — VLA policy adaptation and evaluation](experiments/06-video-world-models-and-vlam/019-vla-policy-adaptation/README.md) | Check whether a VLA adds instruction-following or scene/task generalization over a task-specialized policy. First verify embodiment, camera, observation and action compatibility; adapt or use another benchmark when needed. | Model revision/terms, explicit interface mapping, compatible comparison where possible, task results and categorized failures | Planned |
+| [020 — From generated video plans to robot actions](experiments/06-video-world-models-and-vlam/020-video-world-model-study/README.md) | Study the complete video-to-action chain: generate a visual plan, recover robot actions through an IDM or policy, execute bounded steps in simulation, then replan from new observations. DREAMGEN-style synthetic trajectories are an optional follow-up. | Generated plans, recovered actions, actual simulator rollouts, separate plan/action/task metrics, latency and memory | Planned |
+| [021 — Closed-loop comparison](experiments/06-video-world-models-and-vlam/021-video-to-action-closed-loop/README.md) | Compare compatible baseline, VLA and video-to-action systems. Where possible, isolate the value of feedback by comparing open-loop execution with receding-horizon replanning. | Held-out task results, plan adherence, action validity, recovery, latency, failures and uncertainty | Planned |
+| [022 — Robot policy deployment profile](experiments/06-video-world-models-and-vlam/022-robot-policy-deployment-profile/README.md) | Test a policy behind an observation/action service interface and explore operational behavior before considering hardware. | End-to-end latency, resource use, deadline misses, stale-input/timeout handling, watchdog and fallback evidence | Planned; simulator only |
+
+The order is intentional: 018 establishes what task and data are being measured; 019 checks the VLA route; 020 tests whether a generated future can become executable action; 021 evaluates these systems in closed loop; 022 profiles the resulting policy service. See the [track index](experiments/06-video-world-models-and-vlam/README.md) for detailed runbooks and prerequisites.
+
 ## Reproduction method
 
 1. Read the experiment question and predict the outcome before running it.

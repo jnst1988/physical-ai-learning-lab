@@ -50,7 +50,7 @@ Date / Experiment / Question / Prediction / Exact command and configuration / Ob
 
 **Decision:** Make customer discovery -> knowledge assistant -> tools -> cloud handover -> fleet data loop -> simulation the primary sequence. Defer ML/perception and use them on demand.
 
-**Source boundary:** The target role was located in a secondary public reproduction; the exact current official employer JD was not confirmed. See [role alignment](role-alignment.md).
+**Source boundary:** The target role was located in a secondary public reproduction; the exact current official employer JD was not confirmed. This historical branch was later removed when the learning path returned to Physical AI research.
 
 **Artifacts:** Added labs 018–023, a fictional worked charter, architecture and acceptance plan for 018, and a reusable solution-delivery checklist.
 
