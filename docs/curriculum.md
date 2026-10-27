@@ -2,11 +2,11 @@
 
 ## Current priority — Physical AI across robot embodiments
 
-As of 2026-10-27, follow the [video world model and VLAM track](../experiments/07-video-world-models-and-vlam/README.md) and [Physical AI roadmap](physical-ai-roadmap.md). Start with the LeRobot PushT baseline (024), then video prediction (025) and VLA (026) on one task, a controlled closed-loop comparison (027), and deployment profiling (028). Automotive is one domain case study. ML and perception are just-in-time foundations; 001–023 are not a required sequence.
+As of 2026-10-27, follow the [video world model and VLAM track](../experiments/07-video-world-models-and-vlam/README.md) and [Physical AI roadmap](physical-ai-roadmap.md). The broader learning arc begins with perception problems well represented in autonomous driving, then transfers spatial and temporal reasoning into robotics: start with the LeRobot PushT baseline (018), compare video prediction (019) and VLA (020) on one task, perform a controlled closed-loop comparison (021), then profile deployment (022). ML and perception are just-in-time foundations; 001–017 are not a required sequence.
 
 ## Scope and status
 
-Experiment 001 is implemented and verified. Experiment 017 (YOLO) has a runnable first-inference script but no actual model run or measured YOLO results yet. Experiments 002–016 have goals, hypotheses, evaluation protocols, notebooks, configuration worksheets, and result templates. Their algorithms have not been implemented or evaluated. Creating a scaffold is not evidence that the learner has completed it.
+Experiment 001 is implemented and verified. Experiment 017 (YOLO) has a first-inference runner but no actual model run or measured YOLO results yet. The model-study track keeps prioritized placeholders for tracking, segmentation, depth and BEV/occupancy to form a perception-to-Physical-AI bridge; these are not yet implemented. Experiments 002–016 have goals, hypotheses, evaluation protocols, notebooks, configuration worksheets, and result templates. Their algorithms have not been implemented or evaluated. Creating a scaffold is not evidence that the learner has completed it.
 
 ## Optional deep-study sequence — deferred
 

@@ -1,6 +1,6 @@
 # Open-source model studies
 
-**Priority update (2026-10-26):** This is a supporting study track. Start with [Automotive AI Solutions](../06-automotive-ai-solutions/README.md); learn this material only when it supports the next solution decision. Existing prerequisite chains apply to deep study, not to entry into the solution track.
+**Priority update:** This is a supporting study track. Use it as a just-in-time foundation for the primary [Physical AI video/world-model and VLA track](../07-video-world-models-and-vlam/README.md).
 
 **Status: learning framework only.** This stage complements, rather than replaces, Experiments 001–016.
 
@@ -15,20 +15,21 @@
 
 **Start:** [017 — YOLO](017-yolo/README.md). It is a *scaffold*: no official model has been installed, trained, evaluated, or benchmarked in this repository.
 
-## Planned studies (not yet created)
+## Curated bridge: perception to Physical AI
 
-| Candidate | Foundation connections | Status |
-| --- | --- | --- |
-| 017 YOLO | 005 image classification, 006 IoU/NMS, [CNN](../../docs/concepts/cnn.md) | Scaffold exists |
-| Grounding DINO | 006 detection, [attention](../../docs/concepts/attention.md) | Planned |
-| SAM 2 | 007 segmentation, [temporal fusion](../../docs/concepts/temporal-fusion.md) | Planned |
-| Depth Anything V2 | 008 monocular depth and scale | Planned |
-| BEVFormer | 009 camera projection, [attention](../../docs/concepts/attention.md), [temporal fusion](../../docs/concepts/temporal-fusion.md) | Planned |
-| SparseDrive | 3D scene representations, sparse queries, prediction | Planned |
-| FoundationPose | 009–011 coordinate frames and pose | Planned |
-| World models | 012 occupancy, 013 simulation, 015 behavior cloning | Planned |
+YOLO is a useful first full-model study, but it covers only object detection. To understand the transition from autonomous-driving perception to general Physical AI, the next studies should add temporal identity, object masks, geometry and action-relevant scene representations. The robotics track then uses those representations in a shared task, tests VLA/world-model policies, and closes the loop with measured actions.
 
-Future studies receive directories only when active work begins. Avoid empty notebooks and fabricated results.
+| Priority / placeholder | Capability and learning question | Candidate reference | Connects to | State |
+| --- | --- | --- | --- | --- |
+| Done first / 017 | **Object detection:** what do boxes, confidence thresholds and NMS expose or hide? | [YOLO11](017-yolo/references.md) | 005–006; CNN features | Scaffold and runner exist; real inference pending |
+| P1 / next | **Video tracking:** how do detections become stable object identities over time, and how do ID switches affect downstream decisions? | ByteTrack or BoT-SORT | 006; temporal fusion; video observation contracts in 018 | Placeholder only |
+| P1 / next | **Promptable segmentation:** can an object be followed as a pixel mask through a video, and where does tracking drift? | SAM 2 | 007; temporal fusion; robot visual observations | Placeholder only |
+| P2 / later | **Depth and 3D geometry:** which scale and calibration assumptions are needed to turn image evidence into useful spatial measurements? | Depth Anything V2, paired with calibrated geometry | 008–011; camera/robot frames | Placeholder only |
+| P2 / later | **Driving-scene BEV / occupancy:** how are multi-camera observations fused into a spatial state useful for prediction and planning, and what transfers to robotics? | BEVFormer or a smaller occupancy baseline | 009, 012; temporal fusion; world models | Placeholder only |
+
+These are capability placeholders, not a commitment to reproduce every named model. Prefer one model per missing capability, select an upstream revision and verify its license/compute needs when starting the work. Do not add empty directories, notebooks or implied results. In particular, Grounding DINO, SparseDrive and FoundationPose remain optional references: add them only if a concrete question remains after the core bridge above.
+
+The intended connection is **image detection → temporal object state → masks and geometry → spatial/occupancy representation → VLA or video-world-model policy → closed-loop task evaluation**. The autonomous-driving domain supplies mature perception problems and evaluation habits; the Physical AI path tests which ideas transfer to robots and which depend on vehicle-specific sensors or labels.
 
 ## How to contribute a model study
 

@@ -1,6 +1,6 @@
 # Physical AI roadmap: video world models, VLA and deployment
 
-Updated 2026-10-27. The practical sequence below uses the published LeRobot 0.6.0 PushT evaluation interface as its first baseline. Physical AI remains broad across manipulation, mobile, humanoid and autonomous systems.
+Updated 2026-10-27. The learning arc starts with autonomous-driving perception because it provides concrete detection, tracking, geometry and spatial-representation problems, then carries those ideas into VLA/video-world-model policies and closed-loop robotics. The practical sequence below uses the published LeRobot 0.6.0 PushT evaluation interface as its first shared robot baseline. Physical AI remains broad across manipulation, mobile, humanoid and autonomous systems.
 
 ## Learning question
 
@@ -10,15 +10,15 @@ Can a system predict how actions change the physical world, connect predictions 
 
 | Phase | Concrete work | Exit evidence | Compute gate |
 | --- | --- | --- | --- |
-| A / 024 | Isolated Python 3.12 environment; LeRobot 0.6.0; published PushT Diffusion Policy; 10-episode smoke run, then 50-episode evaluation | Exact command, package versions, device, replay evidence, success/failure report | Probe CPU/MPS/CUDA; record actual device and runtime |
-| B / 025 | Select one action-conditioned world model; compare prediction against actual continuation on saved episodes | Side-by-side clips, model revision/terms, task metrics, runtime and memory | If CUDA/memory unavailable, retain replay contract and mark full model inference blocked |
-| C / 026 | Select one LeRobot-supported VLA and run it on the same task interface | Action contract, model terms, matched episodes and failures | Check model card and device requirements before download |
-| D / 027 | Compare baseline, VLA and video-ranked candidate actions on matched seeds | Ablation with task success, recovery, violations and per-decision latency | Keep simulation as the action boundary |
-| E / 028 | Policy service, timeout/stale-observation injection and deployment-shaped profiling | Reproducible profile, fallback evidence and handover guide | Real robot is a separate future validation step |
+| A / 018 | Isolated Python 3.12 environment; LeRobot 0.6.0; published PushT Diffusion Policy; 10-episode smoke run, then 50-episode evaluation | Exact command, package versions, device, replay evidence, success/failure report | Probe CPU/MPS/CUDA; record actual device and runtime |
+| B / 019 | Select one action-conditioned world model; compare prediction against actual continuation on saved episodes | Side-by-side clips, model revision/terms, task metrics, runtime and memory | If CUDA/memory unavailable, retain replay contract and mark full model inference blocked |
+| C / 020 | Select one LeRobot-supported VLA and run it on the same task interface | Action contract, model terms, matched episodes and failures | Check model card and device requirements before download |
+| D / 021 | Compare baseline, VLA and video-ranked candidate actions on matched seeds | Ablation with task success, recovery, violations and per-decision latency | Keep simulation as the action boundary |
+| E / 022 | Policy service, timeout/stale-observation injection and deployment-shaped profiling | Reproducible profile, fallback evidence and handover guide | Real robot is a separate future validation step |
 
-The short path is `024 -> saved PushT replay -> 025 prediction comparison`. The 024 baseline remains useful if full video inference is blocked by hardware. Keep latent-state prediction and pixel/video generation as distinct studies.
+The short path is `018 -> saved PushT replay -> 019 prediction comparison`. The 018 baseline remains useful if full video inference is blocked by hardware. Keep latent-state prediction and pixel/video generation as distinct studies.
 
-## 024: Run the local baseline
+## 018: Run the local baseline
 
 Create a separate Python 3.12 environment so simulator dependencies do not change the root learning environment:
 
@@ -48,12 +48,12 @@ Keep outputs under ignored `artifacts/`: episode videos, logs and full traces. C
 
 Latent models such as V-JEPA 2-AC predict representations that need not be decodable video; pixel/video generators produce visible futures. A generic text-to-video clip is not an action-conditioned robot world model. A plausible future does not show that it follows the specified action or obeys physics. Keep visual quality, task-state prediction and action execution as separate outcomes.
 
-## 025–028 procedure
+## 019–022 procedure
 
-- **025:** pin one official model/checkpoint and license, freeze observation/action windows, save predicted and actual continuations side by side, measure task-state agreement, latency and memory. BWM is one pixel-video candidate; its published inference is CUDA-based and uses Wan2.2 TI2V 5B, so check local compute before downloading.
-- **026:** pick a LeRobot-supported VLA only after checking its revision, terms, cameras, task, action dimensions, normalization and device needs. Test one simulation episode before a matched comparison.
-- **027:** compare baseline, VLA, and the same action candidates with video-world-model ranking. Hold initial states/seeds/action limits fixed. Include model latency and failures; a video score never directly commands hardware.
-- **028:** profile an interface-shaped policy service; inject stale observations and timeouts; verify watchdog/fallback in simulation before considering a physical robot.
+- **019:** pin one official model/checkpoint and license, freeze observation/action windows, save predicted and actual continuations side by side, measure task-state agreement, latency and memory. BWM is one pixel-video candidate; its published inference is CUDA-based and uses Wan2.2 TI2V 5B, so check local compute before downloading.
+- **020:** pick a LeRobot-supported VLA only after checking its revision, terms, cameras, task, action dimensions, normalization and device needs. Test one simulation episode before a matched comparison.
+- **021:** compare baseline, VLA, and the same action candidates with video-world-model ranking. Hold initial states/seeds/action limits fixed. Include model latency and failures; a video score never directly commands hardware.
+- **022:** profile an interface-shaped policy service; inject stale observations and timeouts; verify watchdog/fallback in simulation before considering a physical robot.
 
 ## Scope and research context
 

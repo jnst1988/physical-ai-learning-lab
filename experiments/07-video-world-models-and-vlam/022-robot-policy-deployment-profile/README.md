@@ -1,4 +1,4 @@
-# 028: Robot policy deployment profile
+# 022: Robot policy deployment profile
 
 **Status:** Planned. Begin with a simulator service, not physical motors.
 

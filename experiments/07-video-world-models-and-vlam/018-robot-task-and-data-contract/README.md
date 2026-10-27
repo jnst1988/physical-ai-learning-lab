@@ -1,10 +1,10 @@
-# 024: PushT baseline and robot data contract
+# 018: PushT baseline and robot data contract
 
 **Status:** Runbook prepared; not yet executed in this repository.
 
 ## Purpose
 
-Establish a repeatable simulator, policy, episode, video and evaluation contract before adding video prediction or a VLA. This is the shared benchmark for 025–027.
+Establish a repeatable simulator, policy, episode, video and evaluation contract before adding video prediction or a VLA. This is the shared benchmark for 019–021.
 
 ## Isolated environment
 

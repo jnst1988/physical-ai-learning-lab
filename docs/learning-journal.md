@@ -79,3 +79,13 @@ Date / Experiment / Question / Prediction / Exact command and configuration / Ob
 **Evidence boundary:** Commands have not been run here. No model inference, rollout or deployment result is claimed.
 
 **Next:** Execute 024 on the available device, record the environment and episode results, then pick 025 based on the actual hardware.
+
+## 2026-10-27 — Remove automotive enterprise branch and renumber the Physical AI track
+
+**Decision:** Remove the Automotive AI Solutions 018–023 branch so the repository has one clear Physical AI learning path.
+
+**Structure:** The PushT baseline is now 018, video world-model study 019, VLA study 020, video-to-action closed loop 021, and deployment profile 022. Historical 2026-10-26 notes describe a previous direction and are retained as project history.
+
+**Perception bridge:** Keep 017 YOLO as the first open-model study, then reserve capability-focused placeholders for video tracking, promptable segmentation, depth/geometry and BEV/occupancy. This covers the key transition from autonomous-driving perception to spatial/temporal state and robot action without requiring every detector or foundation model. The placeholder table is in [05 Open-source Model Studies](../experiments/05-open-source-model-studies/README.md); later IDs will be assigned when an experiment is actually started.
+
+**Next:** Run the 018 LeRobot PushT baseline and record actual episode results before beginning model comparisons.
