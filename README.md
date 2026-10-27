@@ -43,6 +43,7 @@ The primary track is [018–022 Video World Models and VLAM for Physical AI](exp
 | [Spatial AI](experiments/03-spatial-ai/README.md) | How is 3D space represented? | 009–012: camera geometry, point clouds, pose, mapping | Scaffolded; not run |
 | [Physical AI](experiments/04-physical-ai/README.md) | How do perception and action connect? | 013–016: simulation, control, imitation, evaluation | Scaffolded; not run |
 | [Open-source model studies](experiments/05-open-source-model-studies/README.md) | How do full research models work in practice? | 017 YOLO first-inference script; other models planned | Runner available; real YOLO run pending |
+| [Video World Models and VLAM](experiments/06-video-world-models-and-vlam/README.md) | How can visual plans be translated into robot actions and improved through closed-loop feedback? | 018–022: PushT task/data baseline, VLA adaptation, video-to-action, closed-loop comparison, deployment profiling | Runbooks prepared; experiments not yet run |
 
 See the [full curriculum and completion checklist](docs/curriculum.md), [concept notes](docs/concepts/README.md), and [model-study template](templates/model-study/README.md). Experiments 002–016 contain English explanations, learning notebooks, proposed configurations, and result worksheets; their algorithms are not implemented or evaluated. Only Experiment 001 is currently runnable as a complete experiment.
 
